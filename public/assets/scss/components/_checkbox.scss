@@ -1,0 +1,80 @@
+.custom-check {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    @extend %user-cursor;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    &_checkbox {
+        .custom-check {
+            &__checkmark {  
+                width: rem(20);
+                height: rem(20);
+                border: rem(2) solid map-get($color-scheme, 'black-30');
+                border-radius: rem(6);
+                margin-right: rem(18);
+                margin-left: rem(2);
+                position: relative;
+                color: #fff;
+        
+                &::after {
+                    @include center-absolute(both);
+                    @include font-icon("\e907");
+                    color: inherit;
+                    opacity: 0;
+                    visibility: hidden;
+                    font-size: rem(25);
+                }
+            }
+        }
+
+        input:checked ~ .custom-check__checkmark {
+            background-color: $color-main;
+            border-color: $color-main;
+
+            &::after {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    // &_radio {
+    //     .custom-check {
+    //         &__checkmark {  
+    //             width: rem(18);
+    //             height: rem(18);
+    //             border-radius: 50%;
+    //             border: rem(1) solid #000;
+    //             margin-right: rem(14);
+    //             position: relative;
+        
+    //             &::after {
+    //                 content: "";
+    //                 position: absolute;
+    //                 top: rem(4);
+    //                 left: rem(4);
+    //                 width: rem(8);
+    //                 height: rem(8);
+    //                 background-color: #000;
+    //                 border-radius: 50%;
+    //                 @include scale(0);
+    //                 @include transition(all,0.3s,ease);
+    //             }
+    //         }
+    //     }
+
+    //     input:checked ~ .custom-check__checkmark {
+    //         &::after {
+    //             @include scale(1);
+    //         }
+    //     }
+    // }
+}

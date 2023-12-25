@@ -1,0 +1,97 @@
+.btn.green {
+	background: #7d6ef2;
+}
+.first-select .text-xs-center a{
+	color: #121313;
+}
+
+.file-img-title,.zoom-item,.first-select,table.report td,.pickedTitle{
+	color: #737373;
+}
+.btn.red,a.delFile,.deliteSection,.deleteButton{
+	background-color: #F05D5E;
+}
+.tm-blue-bg {
+	background: #121313;
+}
+
+.btn.blue {
+	background: #7d6ef2;
+}
+
+a.active, a.tm-nav-item-link:hover{
+	background: #252727;
+}
+
+.childLink,.tabs-title {
+	color: #7d6ef2;
+}
+.breadCrumb,.fileExtension,.pickedDelete{
+	color: #275066;
+}
+body {
+	background-color: #F3F7FA;
+	color: #373a3c;
+}
+
+.downloadFile img {
+	width: 24px;
+	height: 24px;
+}
+
+.south-east{
+	background: #979797 !important;
+	border: 2px solid #979797;
+	color: #FFFFFF;
+}
+
+.form-control{
+	border-color:#c5c5c5;
+	background: rgba(61, 140, 91, 0.05);
+}
+
+.form-control:focus{
+	border-color:#7d6ef2;
+	background: rgba(61, 140, 91, 0.05);
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+  background: rgba(61, 140, 91, 0.05);  
+}
+
+
+
+@font-face {
+	font-family: "Segoe-sembold";
+	font-display: auto;
+	src: url(../fonts/seguisb.ttf);
+	font-weight: 600;
+	font-style: normal;
+}
+
+.breadCrumb{
+	padding: 40px 0 26px 130px;
+}
+
+.breadcrumb_title{
+	padding: 0 0 60px 130px;
+	font-family: "Segoe-sembold", serif;
+	font-size: 30px;
+	line-height: 40px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #525252;
+}

@@ -1,0 +1,45 @@
+$font-sizes: ( 12, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36 );
+
+.h1-font {
+    font-size: rem(48);
+    line-height: 116%;
+    font-weight: 700;
+    letter-spacing: -1.536px;
+}
+
+.h2-font {
+    font-size: rem(24);
+    font-weight: 700;
+    letter-spacing: -0.36px;
+    line-height: 166%;
+    @extend %flex;
+    @extend %align-top;
+
+    .icon {
+        @include flex(0, 0, auto);
+        font-size: rem(24);
+        margin-top: rem(8);
+        margin-right: rem(12);
+    }
+}
+
+.title {
+    font-size: rem(36);
+    font-weight: 700;
+    line-height: 111%;
+}
+
+.caption-sm {
+    font-size: rem(14);
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 142%;
+}
+
+.text {
+    @each $size in $font-sizes {
+        &-#{$size} {
+            font-size: rem($size);
+        }
+    }
+}

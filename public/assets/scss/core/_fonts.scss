@@ -1,0 +1,26 @@
+@import "../utils/variables";
+
+$fonts:  (
+//  fontName    fontType   fontWeight  fontStyle
+    $fontPrimary 'Black' 900 normal,
+    $fontPrimary 'ExtraBold' 800 normal,
+    $fontPrimary 'Bold' bold normal,
+    $fontPrimary 'SemiBold' 600 normal,
+    $fontPrimary 'Medium' 500 normal,
+    $fontPrimary 'Regular' normal normal,
+    $fontPrimary 'Light' 300 normal,
+    $fontPrimary 'ExtraLight' 200 normal,
+    $fontPrimary 'Thin' 100 normal,
+);
+
+@each $type in $fonts {
+    @font-face {
+        font-family: '#{nth($type, 1)}';
+        src: local('#{nth($type, 1)} #{nth($type, 2)}'), local('#{nth($type, 1)}-#{nth($type, 2)}'),
+        url('../fonts/#{nth($type, 1)}-#{nth($type, 2)}.woff2') format('woff2'),
+        url('../fonts/#{nth($type, 1)}-#{nth($type, 2)}.woff') format('woff');
+        font-weight: #{nth($type, 3)};
+        font-style: #{nth($type, 4)};
+        font-display: swap;
+    }
+}

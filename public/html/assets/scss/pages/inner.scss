@@ -1,0 +1,358 @@
+@import "../utils/_module";
+@import "../components/_combobox";
+@import "../components/_tabs";
+@import "../components/_timeline";
+
+.inner-heading {
+    @extend %flex;
+    @extend %align-top;
+    margin-bottom: rem(32);
+
+    &__icon {
+        @include flex(0, 0, auto);
+        margin-right: rem(24);
+
+        .icon {
+            font-size: rem(32);
+        }
+    }
+
+    &__title {
+        margin-bottom: rem(8);
+        display: block;
+    }
+
+    &__date {
+        line-height: 150%;
+    }
+}
+.inner-block {
+    padding: rem(56) rem(64);
+    @extend %flex;
+
+    &__body {
+        @include flex(1, 1, auto);
+        margin-right: rem(64);
+        padding-right: rem(64);
+        @include vertical-decor("../../img/decor/vertical-black-20.svg");
+
+        &::after {
+            right: rem(-1);
+        }
+    }
+
+    &__img {
+        overflow: hidden;
+        margin-bottom: rem(40);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__info {
+        padding-bottom: rem(40);
+        margin-bottom: rem(40);
+        @include horizontal-decor('../../img/decor/horizontal-black-20.svg');
+
+        .date {
+            margin-bottom: rem(16);
+        }
+
+        &::after {
+            bottom: rem(-1);
+        }
+    }
+
+    &__details-item {
+        padding-bottom: rem(24);
+        margin-bottom: rem(24);
+        @include horizontal-decor("../../img/decor/horizontal-black-20.svg");
+
+        &::after {
+            bottom: rem(-1);
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        .tag {
+            border-radius: rem(8);
+            color: #000;
+            font-weight: 600;
+        }
+    }
+
+    &__subtitle {
+        font-size: rem(18);
+        line-height: 155%;
+        font-weight: 600;
+        margin-bottom: rem(8);
+    }
+
+    &__desc {
+        font-size: rem(18);
+        line-height: 155%;
+
+        table {
+            padding: 0;
+            border: 0;
+            border-spacing: 0;
+            width: 100%;
+            
+            th {
+                font-size: rem(13);
+                text-align: left;
+                font-weight: 600;
+                color: map-get($color-scheme, 'black-40');
+                text-transform: uppercase;
+
+                &:first-child {
+                    border-top-left-radius: rem(12);
+                }
+                &:last-child {
+                    border-top-right-radius: rem(12);
+                }
+            }
+
+            td {
+                font-size: rem(14);
+            }
+
+            th, td {
+                line-height: rem(20);
+                padding: rem(10) rem(12);
+                border: rem(1) solid map-get($color-scheme, 'black-25');
+
+                &:first-child {
+                    padding-left: rem(20);
+                }
+            }
+
+            tr {
+                &:nth-child(odd) {
+                    td {
+                        background-color: map-get($color-scheme, 'black-25');
+                    }
+                }
+                &:last-child {
+                    td {
+                        &:first-child {
+                            border-bottom-left-radius: rem(12);
+                        }
+                        &:last-child {
+                            border-bottom-right-radius: rem(12);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__action {
+        @include flex(0, 0, auto);
+        max-width: rem(488);
+        width: 100%;
+
+        .info-list {
+            margin-bottom: rem(48);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .countdown {
+            margin-bottom: rem(48);
+        }
+    }
+}
+
+.explore-block {
+    overflow: hidden;
+    border-radius: rem(16);
+    padding: rem(32);
+
+    &__img {
+        border-radius: rem(8);
+        overflow: hidden;
+        margin-bottom: rem(16);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__title {
+        margin-bottom: rem(16);
+    }
+
+    &__item {
+        padding-bottom: rem(16);
+        margin-bottom: rem(16);
+        @include horizontal-decor("../../img/decor/horizontal-black-20.svg");
+        @extend %flex;
+        @include flex-flow(row, wrap);
+
+        &::after {
+            bottom: rem(-1);
+        }
+
+        & > div {
+            @include flex(0, 0, 50%);
+            max-width: 50%;
+
+            &:nth-child(2):not(.advantages) {
+                text-align: right;
+            }
+
+            &.advantages {
+                margin-top: rem(8);
+                max-width: 100%;
+                @include flex(0, 0, 100%);
+            }
+        }
+    }
+
+    &__btns {
+        @extend %flex;
+
+        .btn {
+            flex: 1;
+
+            &:nth-child(2) {
+                margin-left: rem(16);
+            }
+        }
+    }
+}
+
+.advantages {
+    padding: rem(8);
+
+    &__item {
+        @extend %flex;
+        @extend %align-between;
+        margin-bottom: rem(8);
+        padding: rem(3.5) 0;
+        position: relative;
+        padding-right: rem(24);
+
+        & > div {
+            &:nth-child(2) {
+                position: absolute;
+                right: rem(-2);
+                top: rem(-6);
+
+                .icon {
+                    font-size: rem(35);
+                }
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.info-list {
+    border-radius: rem(16);
+    background-color: map-get($color-scheme, "black-25");
+    padding: rem(24) rem(32);
+
+    &__title {
+        @extend %flex;
+        margin-bottom: rem(16);
+        font-size: rem(20);
+        font-weight: 600;
+
+        .icon {
+            margin-right: rem(8);
+            font-size: rem(24);
+            color: map-get($color-scheme, "black-50");
+        }
+    }
+
+    &__item {
+        @include horizontal-decor("../../img/decor/horizontal-black-20.svg");
+        @extend %flex;
+        @extend %align-middle;
+        @include flex-flow(row, wrap);
+
+        &::after {
+            top: rem(-1);
+        }
+    }
+
+    &__subtitle {
+        @include flex(0, 0, 100%);
+        margin-bottom: rem(8);
+        font-size: rem(14);
+        font-weight: 500;
+        line-height: 170%;
+    }
+
+    &__label {
+        @include flex(1, 1, auto);
+        font-weight: 600;
+        padding-right: rem(24);
+
+        .custom-select {
+            width: 100%;
+
+            .combo-box {
+                width: 100%;
+            }
+        }
+    }
+
+    &__value {
+        @include flex(0, 0, auto);
+        max-width: 50%;
+        font-weight: 500;
+
+        &+.info-list__subtitle {
+            margin-top: rem(24);
+        }
+    }
+
+    &__devices {
+        @extend %flex;
+        @extend %align-middle;
+
+        img {
+            width: rem(32);
+            margin-right: rem(8);
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &__doc {
+        @extend %flex;
+        @extend %align-top;
+    }
+
+    &_sm {
+        .info-list__item {
+            padding-top: rem(20);
+            margin-top: rem(20);
+        }
+    }
+
+    &_md {
+        .info-list__item {
+            padding-top: rem(24);
+            margin-top: rem(24);
+        }
+    }
+}

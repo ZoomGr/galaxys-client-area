@@ -1,0 +1,194 @@
+.form-wrap {
+    padding: rem(32);
+
+    &__submit {
+        margin-top: rem(24);
+
+        .btn {
+            width: 100%;
+            max-width: rem(324);
+        }
+    }
+}
+
+.form-fields {
+    .form-field {
+        margin-top: rem(16);
+    }
+}
+
+.form-field {
+    position: relative;
+
+    &__label {
+        font-size: rem(14);
+        font-weight: 500;
+        line-height: 171%;
+        margin-bottom: rem(8);
+        margin-bottom: rem(4);
+    }
+
+    &__target {
+        position: relative;
+        @extend %flex;
+
+        &_password {
+            .form-field {
+                &__icon {
+                    z-index: 1;
+                    @extend %user-cursor;
+                    width: rem(24);
+                    height: rem(24);
+                    
+                    .icon {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        @include transition(all,0.3s,ease);
+
+                        &[class*='show'] {
+                            @extend %hidden;
+                        }
+                    }
+
+                    &.visible {
+                        .icon {
+                            &[class*='show'] {
+                                @extend %show;
+                            }
+                            &[class*='hidden'] {
+                                @extend %hidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__icon { 
+        @include center-absolute(vertical);
+        @extend %flex;
+        @extend %align-middle;
+        @extend %align-center;
+    }
+
+    &__input {
+        width: 100%;
+        border-radius: rem(8);
+        background-color: map-get($color-scheme, 'black-25');
+        font-weight: 500;
+        color: inherit;
+        font-size: rem(16);
+
+        &.bg-transparent {
+            background-color: transparent;
+        }
+
+        @include input-placeholder {
+            color: map-get($color-scheme, 'black-20');
+            font-weight: 500;
+        }
+    }
+
+    &__message {
+        @include font(normal, 14, 1, inherit, 0);
+        margin-top: rem(6);
+
+        &.error {
+            color: map-get($color-scheme, 'warning');
+        }
+    }
+
+    &__link {
+        padding-top: rem(4);
+        font-size: rem(14);
+        font-weight: 500;
+        line-height: 140%;
+        color: map-get($color-scheme, 'black-50');
+    }
+
+    // SIZES *****************
+    &_sm {
+        .form-field {
+            &__target {
+                &_prefix {
+                    .form-field__icon {
+                        left: rem(16);
+                    }
+
+                    .form-field__input {
+                        padding-left: rem(24 + 24);
+                    }
+                }
+        
+                &_suffix {
+                    .form-field__icon {
+                        right: rem(12);
+                    }
+
+                    .form-field__input {
+                        padding-right: rem(12 + 24);
+                    }
+                }
+            }
+
+            &__icon {
+                font-size: rem(24);
+            }
+
+            &__input {
+                height: rem(48);
+                padding-left: rem(12);
+                padding-right: rem(12);
+            }
+        }
+    }
+
+    &_md {
+        .form-field {
+            &__target {
+                &_prefix {
+                    .form-field__icon {
+                        left: rem(16);
+                    }
+
+                    .form-field__input {
+                        padding-left: rem(16 + 24);
+                    }
+                }
+        
+                &_suffix {
+                    .form-field__icon {
+                        right: rem(16);
+                    }
+
+                    .form-field__input {
+                        padding-right: rem(16 + 24);
+                    }
+                }
+            }
+
+            &__input {
+                height: rem(56);
+                padding-left: rem(16);
+                padding-right: rem(16);
+                border-radius: rem(8);
+            }
+        }
+    }
+
+    &_textarea {
+        .form-field {
+            &__input {
+                min-height: rem(180);
+                min-height: rem(172);
+                padding-top: rem(10);
+                font-family: inherit;
+                resize: none;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+    }
+}

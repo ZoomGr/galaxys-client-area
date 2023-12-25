@@ -1,0 +1,120 @@
+.timeline {
+    padding-left: rem(32);
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: rem(24);
+        bottom: rem(48);
+        left: 0;
+        width: rem(14);
+        @include background('../../img/decor/timeline.svg', top left, rem(14) rem(8), repeat-y, transparent);
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: rem(47);
+        left: 0;
+        width: rem(14);
+        height: rem(1);
+        background-color: #B3B3B3;
+    }
+
+    &__wrap {
+        @extend %flex;
+        @include flex-flow(column, nowrap);
+    }
+
+    &__item {
+        margin-bottom: rem(16);
+        position: relative;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: rem(24);
+            left: rem(-32);
+            width: rem(32);
+            height: rem(1);
+            background-color: #B3B3B3;
+        }
+
+        &.ongoing {
+            .timeline {
+                &__trigger {
+                    background-color: map-get($color-scheme, 'main-10');
+                    color: $color-main;
+                }
+
+                &__status {
+                    color: #fff;
+                    background-color: $color-main;
+                }
+            }
+        }
+    }
+
+    &__trigger {
+        border-radius: rem(12);
+        background-color: map-get($color-scheme, 'black-25');
+        padding: rem(16);
+        @extend %flex;
+        @extend %align-middle;
+    }
+
+    &__heading {
+        @include flex(1, 1, auto);
+        padding-right: rem(16);
+    }
+
+    &__title {
+        font-size: rem(15);
+        line-height: rem(16);
+        font-weight: 600;
+        margin-bottom: rem(8);
+    }
+
+    &__subtitle {
+        font-size: rem(12);
+        line-height: rem(16);
+    }
+
+    &__info {
+        @include flex(0, 0, auto);
+        @extend %flex;
+        @extend %align-middle; 
+    }
+
+    &__status {
+        @extend %flex;
+        @extend %align-middle;
+        padding: rem(4) rem(8) rem(4) rem(4);
+        background-color: map-get($color-scheme, 'black-5');
+        color: map-get($color-scheme, 'black-50');
+        border-radius: rem(30);
+        font-size: rem(14);
+        line-height: 142%;
+        margin-right: rem(16);
+        @include flex(0, 0, auto);
+
+        .icon {
+            font-size: rem(16);
+            margin-right: rem(4);
+        }
+    }
+    
+    &__arrow {
+        @include flex(0, 0, auto);
+        font-size: rem(24);
+        color: $color-black;
+    }
+
+    &__desc {
+        padding: rem(24);
+        line-height: rem(24);
+    }
+}

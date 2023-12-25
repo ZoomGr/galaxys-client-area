@@ -1,0 +1,63 @@
+@import "../utils/_module";
+@import "../components/_form-items";
+
+.main-page {
+    margin-left: 0;
+    margin-top: 0;
+    
+    .content {
+        padding-top: rem(152);
+    }
+}
+
+
+.sign-up-container {
+    text-align: center;
+}
+
+.sign-up-logo {
+    margin-bottom: rem(32);
+}
+
+.sign-up {
+    padding: rem(32);
+
+    &__icon {
+        width: rem(56);
+        height: rem(56);
+        border: rem(2) solid map-get($color-scheme, 'black-10');
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: rem(4);
+
+        .icon {
+            font-size: rem(24);
+        }
+    }
+
+    &__title {
+        font-size: rem(28);
+        line-height: 142%;
+        font-weight: 600;
+        color: map-get($color-scheme, 'black-80');
+        margin-bottom: rem(4);
+    }
+
+    &__desc {
+        font-size: rem(14);
+        font-weight: 500;
+        line-height: 140%;
+        color: map-get($color-scheme, 'black-50');
+        margin-bottom: rem(32);
+    }
+
+    .form-field {
+        &__label {
+            text-align: left;
+        }
+    }
+
+    &__btn {
+        margin-top: rem(32);
+    }
+}

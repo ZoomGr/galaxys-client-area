@@ -1,0 +1,634 @@
+// sass --watch --style=compressed assets/scss:assets/
+// sass --no-source-map --watch --style=compressed assets/scss:assets/css
+@import "utils/_module";
+@import "core/_icons";
+@import "components/_button";
+
+.sticky-element {   
+    position: fixed;
+    top: 0;
+    z-index: z(sticky-element);
+}
+
+.content {
+    padding-top: rem(43);
+
+    &__heading {
+        margin-bottom: rem(45);    
+    }
+
+    &__body {
+        padding-bottom: rem(90);
+    }
+
+    &__title {
+        position: relative;
+        display: inline-block;
+
+        .round-badge {
+            position: absolute;
+            top: rem(16);
+            right: rem(-36);
+            width: rem(24);
+            height: rem(24);
+            line-height: rem(24);
+            text-align: center;
+            color: #fff;
+            background-color: map-get($color-scheme, 'warning');
+            font-size: rem(12);
+            font-weight: 600;
+        }
+    }
+}
+
+.content-aside {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    &__thumb {
+        position: sticky;
+        top: rem(130);
+    }
+}
+
+.date {
+    @extend %flex;
+    @extend %align-middle;
+    padding: rem(4) 0;
+
+    .icon {
+        color: inherit;
+        font-size: rem(16);
+        margin-right: rem(4);
+        
+        &::before {
+            vertical-align: rem(-1);
+        }
+    }
+
+    span {
+        color: inherit;
+        font-size: rem(14);
+        font-weight: 500;
+    }
+
+    &_md {
+        .icon {
+            font-size: rem(20);
+            margin-right: rem(8);
+            margin-left: rem(8);
+        }
+
+        span {
+            font-size: rem(20);
+        }
+    }
+}
+
+.game-card {
+    display: block;
+
+    &__img {
+        margin-bottom: rem(16);
+        overflow: hidden;
+        position: relative;
+        
+        img {
+            width: 100%;
+        }
+    }
+
+    &__action {
+        position: absolute;
+        z-index: 1;
+        @extend %user-cursor;
+        @include transition(all,0.3s,ease);
+        @extend %hidden;
+
+        &_fav {
+            @extend %flex;
+            @extend %align-middle;
+            @extend %align-center;
+            border-radius: 50%;
+            top: rem(16);
+            right: rem(16);
+            background-color: #fff;
+            width: rem(40);
+            height: rem(40);
+            font-size: rem(24);
+            color: $color-main;
+
+            &.active {
+                background-color: $color-main;
+                color: #fff;
+            }
+        }
+
+        &_video {
+            left: rem(16);
+            top: rem(16);
+        }
+    }
+
+    &__title {
+        margin-bottom: rem(6);
+
+        &:only-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__date {
+        margin-bottom: rem(10);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &:hover {
+        .game-card {
+            &__action {
+                @extend %show;
+            }
+        }
+    }
+}
+
+.type-pair {
+    font-size: rem(11);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: map-get($color-scheme, 'black-70');
+    @extend %inline-flex;
+    @extend %align-middle;
+    padding: rem(4.5) 0;
+
+    .type-dot {
+        margin-right: rem(6);
+
+        &_testing {
+            border: rem(3) solid map-get($color-scheme, 'testing-20');
+        }
+        &_operators {
+            border: rem(3) solid map-get($color-scheme, 'operators-20');
+        }
+    }
+}
+
+.type-dot {
+    border-radius: 50%;
+    display: block;
+
+    span {
+        @include flex(0 ,0, auto);
+        display: block;
+        border-radius: 50%;
+        width: rem(5);
+        height: rem(5);
+    }
+
+    &_testing {
+        span {
+            background-color: map-get($color-scheme, 'testing');
+        }
+    }
+
+    &_operators {
+        span {
+            background-color: map-get($color-scheme, 'operators');
+        }
+    }
+}
+
+.tags {
+    position: relative;
+
+    &__wrap {
+        margin: rem(-8) 0 0 rem(-8);
+        @extend %flex;
+        @include flex-flow(row, wrap);
+
+        .tag {
+            margin: rem(8) 0 0 rem(8);
+        }
+    }
+}
+
+.tag {
+    white-space: nowrap;
+    padding: rem(4) rem(8);
+    background-color: map-get($color-scheme, 'black-5');
+    border-radius: rem(16);
+    color: map-get($color-scheme, 'black-70');
+    left: 123%;
+    font-size: rem(13);
+    font-weight: 500;
+}
+
+.filters {
+    &__action {
+        @extend %flex;
+        @extend %align-middle;
+    }
+
+    &__title {
+        margin-right: rem(32);
+    }
+
+    &__list {
+        @extend %flex;
+    }
+
+    &__item {
+        margin-right: rem(16);
+    }
+
+    &__tags {
+        margin-top: rem(16);
+
+        &-wrap {
+            margin: rem(-12) 0 0 rem(-12);
+            @extend %flex;
+            @include flex-flow(row, wrap);
+
+            .filter-tag {
+                margin: rem(12) 0 0 rem(12);
+            }
+        }
+    }
+}
+
+.filter-tag {
+    padding: rem(8) rem(8) rem(8) rem(12);
+    background-color: map-get($color-scheme, 'main-10');
+    white-space: nowrap;
+    @extend %flex;
+    @extend %align-middle;
+    font-size: rem(14);
+    font-weight: 500;
+    border-radius: rem(32);
+
+    &__remove {
+        @include flex(0, 0, auto);
+        margin-left: rem(6);
+        @extend %user-cursor;
+
+        .icon {
+            font-size: rem(24);
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            color: map-get($color-scheme, 'black-60');
+        }
+    }
+}
+
+.link {
+    display: inline-block;
+    color: $color-main;
+    position: relative;
+    font-size: rem(14);
+    font-weight: 500;
+    padding-bottom: rem(4);
+
+    &::after {
+        content: "";
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        height: rem(2);
+        position: absolute;
+        background-color: currentColor;
+        opacity: 0.4;
+    }
+}
+
+.action-bar {
+    @extend %flex;
+    margin-bottom: rem(32);
+    padding: rem(8);
+
+    &__tabs {
+        @include flex(1, 1, auto);
+        @extend %flex;
+        @extend %align-middle;
+
+        .tab {
+            @include flex(0, 0, auto);
+            margin-right: rem(8);
+        }
+    }
+
+    &__btn {
+        @include flex(0, 0, auto);
+    }
+}
+
+.paging {
+    display: inline-block;
+
+    &__wrap {
+        @extend %flex;
+        @extend %align-middle;
+    }
+
+    &__item {
+        font-weight: 600;
+        width: rem(48);
+        height: rem(48);
+        @extend %flex;
+        @extend %align-middle;
+        @extend %align-center;
+        border: rem(1) solid transparent;
+        cursor: pointer;
+        border-radius: rem(8);
+
+        .icon {
+            font-size: rem(24);
+        }
+
+        &_disabled {
+            cursor: initial;
+        }
+
+        &.active {
+            border-color: $color-main;
+            color: $color-main;
+        }
+
+        &:not(.paging__item_disabled):hover {
+            color: $color-main;
+        }
+    }
+
+    &__items {
+        @extend %flex;
+        @extend %align-middle;
+    }
+}
+
+.discover-block {
+    position: relative;
+    overflow: hidden;
+    margin-left: rem(32);
+
+    &__img {
+        img {
+            width: 100%;
+        }
+    }
+
+    &__content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: rem(128);
+        padding: rem(24);
+        background: linear-gradient(359deg, #000 0%, rgba(0, 0, 0, 0.00) 100%);
+        @extend %flex;
+        @include flex-flow(column, nowrap);
+        @extend %align-right;
+        text-align: center;
+    }
+
+    &__title {
+        margin-bottom: rem(8);
+        line-height: 133%;
+    }
+
+    &__desc {
+        font-style: italic;
+        line-height: 140%;
+        opacity: 0.87;
+        margin-bottom: rem(16);
+        @include max-lines(2);
+    }
+}
+
+.file-info {
+    @extend %flex;
+    @extend %align-top;
+
+    &__icon {
+        @include flex(0, 0, auto);
+        margin-right: rem(8);
+
+        img {
+            width: rem(40);
+        }
+    }
+
+    &__name {
+        margin-bottom: rem(3);
+    }
+
+    &_md {
+        .file-info {
+            &__icon {
+                img {
+                    width: rem(48);
+                }
+            }
+
+            &__name {
+                margin-bottom: rem(5);
+            }
+        }
+    }
+}
+
+.countdown {
+    padding: rem(24) rem(28);
+    color: #fff;
+    text-align: center;
+    border-radius: rem(16);
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: rem(235);
+        height: rem(228);
+        opacity: 0.5;
+        top: rem(-145);
+        right: rem(-122);
+        filter: blur(73px);
+    }
+
+    &__title {
+        @extend %flex;
+        @extend %align-center;
+        @extend %align-middle;
+        margin-bottom: rem(24);
+
+        span {
+            font-size: rem(20);
+            font-weight: 600;
+        }
+
+        .icon {
+            font-size: rem(24);
+            @include flex(0, 0, auto);
+            margin-right: rem(8);
+        }
+    }
+
+    &__wrap {
+        @extend %flex;
+        @include transition(all,0.3s,ease);
+        position: relative;
+
+        &.loading {
+            .countdown__item {
+                @extend %hidden;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                @include center-absolute(both);
+                width: rem(50);
+                height: rem(50);
+                @include background('../img/loader-white.svg', center, contain, no-repeat, transparent);
+            }
+        }
+    }
+
+    &__item {
+        @include flex(0, 0, 25%);
+        max-width: 25%;
+        padding: rem(8.5) rem(24);
+        @include vertical-decor('../img/decor/vertical-black-50.svg');
+        @include transition(all,0.3s,ease);
+
+        &::after {
+            right: rem(-1);
+        }
+
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    &__counter {
+        font-size: rem(32);
+        font-weight: 600;
+    }
+
+    &__text {
+        font-weight: 500;
+        color: map-get($color-scheme, 'black-10');
+    }
+}
+
+.accordion {
+    &__item {
+        &.open {
+            .accordion {
+                &__arrow {
+                    @include rotate(180);
+                }
+            }
+        }
+    }
+
+    &__header {
+        position: relative;
+        @extend %user-cursor;
+    }
+
+    &__arrow {
+        @include transition(all,0.3s,ease);
+    }
+}
+
+.breadcrumb {
+    line-height: 150%;
+    font-weight: 700;
+
+    &__wrap {
+        @extend %flex;
+        @include flex-flow(row, wrap);
+        margin: rem(-5) 0 0 rem(-5);
+    }
+
+    &__item {
+        @extend %flex;
+        @extend %align-middle;
+        margin-left: rem(5);
+        margin-top: rem(5);
+
+        .icon {
+            font-size: rem(24);
+        }
+    }
+
+    a.breadcrumb__item {
+        color: map-get($color-scheme, 'black-40');
+        font-weight: 500;
+    }
+}
+
+.properties {
+    position: relative;
+
+    &__target {
+        @extend %user-cursor;
+
+        .icon {
+            font-size: rem(32);
+        }
+    }
+
+    &__dropdown {
+        position: absolute;
+        top: 90%;
+        right: 0;
+        background-color: #fff;
+        border-radius: rem(8);
+        box-shadow: map-get($shadows, 'xs');
+        padding: rem(10);
+        @extend %hidden;
+        @include transition(all,0.3s,ease);
+        width: rem(170);
+    }
+
+    &__item {
+        @extend %flex;
+        @extend %align-middle;
+        @extend %user-cursor;
+        margin-bottom: rem(6);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .icon {
+            font-size: rem(20);
+        }
+
+        span {
+            font-size: rem(14);
+            margin-left: rem(8);
+        }
+    }
+
+    &.active {
+        .properties {
+            &__dropdown {
+                top: 100%;
+                @extend %show;
+            }
+        }
+    }
+}

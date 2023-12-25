@@ -1,0 +1,73 @@
+/*colors*/
+$color-scheme: (
+    'main': #7468FF,
+    'main-10': rgba(116, 104, 255, 0.10),
+    'main-5': rgba(116, 104, 255, 0.05),
+    'warning': #EA2B4D,
+    'success': #53E27B,
+    'white': #ffffff,
+    'testing': #2495FF,
+    'testing-20': rgba(36, 149, 255, 0.20),
+    'operators': #FB5607,
+    'operators-20': rgba(251, 86, 7, 0.20),
+    'gradient-start': #6B68FD,
+    'gradient-end': #EB63F6,
+    'black': #141414,
+    'black-90': #262626,
+    'black-80': #3D3D3D,
+    'black-70': #545454,
+    'black-60': #696969,
+    'black-50': #828282,
+    'black-40': #999999,
+    'black-30': #B3B3B3,
+    'black-25': #F8F8F8,
+    'black-20': #C9C9C9,
+    'black-10': #E6E6E6,
+    'black-5': #F2F2F2,
+);
+
+$shadows: (
+    'xs': 0px 4px 8px 0px rgba(0, 0, 0, 0.10),
+    'sm': 0px 6px 12px 0px rgba(0, 0, 0, 0.15),
+);
+
+$color-main: map-get($color-scheme, 'main');
+$color-black: map-get($color-scheme, 'black');
+
+$inputHeight: rem(48);
+
+// Z-index Order (From Hight To Low) starts with 101
+$z-indexes: (
+    'toast',
+    'header-dropdown',
+    'modal',
+    'sidebar',
+    'header',
+    'sticky-element',
+    'dropdown',
+);
+
+/* font */
+$defaultHtmlFont: "Tahoma", sans-serif;
+$fontPrimary: 'Inter';
+$baseFontFamily: $fontPrimary;
+$baseFontSize: 16;
+
+/*grid dimensions*/
+$mediaXxlLarge: 1366px;
+$mediaXlLarge: 1280px;
+$mediaLarge: 1024px;
+$mediaMedium: 768px;
+ 
+/* grid  */
+$columnsSize: 12; //count of columns
+$columnSpace: rem(12);
+
+/*screenSizes*/
+$media-xxl: 1439px;
+$media-xl: 1365px;
+$media-lg: 1279px;
+$media-md: 1023px;
+$media-sm: 767px;
+
+

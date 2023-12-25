@@ -1,0 +1,59 @@
+.news-card {
+    position: relative;
+    @extend %flex;
+
+    &_single {
+        overflow: hidden;
+        
+        .news-card {
+            &__body {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: 0;
+                z-index: 1;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+                @extend %flex;
+                @extend %align-right;
+                @include flex-flow(column, nowrap);
+                padding: rem(24) rem(24) rem(20);
+            }
+
+            &__date {
+                margin-bottom: rem(8);
+            }
+        
+            &__title {
+                line-height: 111%;
+            }
+        }
+    }
+
+    &_landscape {
+        .news-card {
+            &__body {
+                @include flex(1, 1, auto);
+                padding-right: rem(16);
+            }
+        
+            &__date {
+                margin-bottom: rem(4);
+            }
+        
+            &__title {
+                line-height: 140%;
+            }
+        
+            &__img {
+                @include flex(0, 0, auto);
+                border-radius: rem(8);
+                overflow: hidden;
+        
+                img {
+                    width: rem(112);
+                }
+            }
+        }
+    }
+}

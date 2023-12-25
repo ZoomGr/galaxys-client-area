@@ -1,0 +1,130 @@
+// Single
+.ui-datepicker.ui-widget.ui-widget-content {
+    border: 0;
+    border-radius: rem(24);
+    box-shadow: map-get($shadows, 'xs');
+    background-color: #fff;
+    border-top: rem(1) solid map-get($color-scheme, 'black-25');
+    color: inherit;
+    font-family: inherit;
+    padding: rem(16) rem(24) rem(24);
+    width: 100%;
+
+    .ui-datepicker-header {
+        margin-top: rem(8);
+        padding: 0 0 rem(24) 0;
+        margin-bottom: rem(16);
+        border-radius: 0;
+        border: 0;
+        color: inherit;
+        background-color: #fff;
+        @include horizontal-decor('../../img/decor/horizontal-black-20.svg');
+
+        &::after {
+            bottom: rem(-1);   
+        }
+
+        .ui-corner-all {
+            top: 0;
+            width: initial;
+            height: initial;
+            @extend %user-cursor;
+
+            &::before {
+                font-size: rem(24);
+                display: block;
+            }
+            
+            &.ui-datepicker-prev {
+                left: 0;
+
+                &::before {
+                    @include font-icon("\e909");
+                }
+            }
+            &.ui-datepicker-next {
+                right: 0;
+
+                &::before {
+                    @include font-icon("\e90a");
+                }
+            }
+            &.ui-state-hover {
+                background-color: #fff;
+                border: 0;
+            }
+
+            span {
+                display: none;
+            }
+        }
+
+        .ui-datepicker-title {
+            margin: 0 rem(16);
+            line-height: 120%;
+            font-size: rem(20);
+            letter-spacing: 0.3px;
+            font-weight: 400;
+        }
+    }
+    .ui-datepicker-calendar {
+        margin: 0;
+        font-size: inherit;
+        table-layout: fixed;
+        color: map-get($color-scheme, 'black-60');
+        text-align: center;
+
+        th {
+            padding: rem(10);
+            color: inherit;
+            font-weight: 500;
+            line-height: 125%;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 0;
+
+            .ui-state-default {
+                border: 0;
+                background-color: transparent;
+                color: inherit;
+                font-weight: inherit;
+                text-align: center;
+                width: rem(40);
+                height: rem(40);
+                line-height: rem(40);
+                border-radius: rem(8);
+                display: inline-block;
+                font-weight: 500;
+                padding: 0;
+                font-size: rem(14);
+                margin-top: rem(8);
+
+                &.ui-state-active, &.ui-state-active.ui-state-hover {
+                    background-color: map-get($color-scheme, 'black-10');
+                    color: map-get($color-scheme, 'black-80');
+                    font-weight: 700;
+                }
+                &.ui-state-hover {
+                    background-color: map-get($color-scheme, 'black-5');
+                }
+            }
+
+            &.ui-datepicker-today {
+                .ui-state-default {
+                    border: rem(1) solid map-get($color-scheme, 'black-10');
+                    font-weight: 700;
+                }
+            }
+
+            &.has-event {
+                .ui-state-default {
+                    background-image: url("../../img/decor/events.svg");
+                    background-size: rem(16) rem(4);
+                    background-position: center rem(32);
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+}
