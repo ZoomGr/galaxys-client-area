@@ -101,6 +101,10 @@
                     </div>
                     <div class="profile__dropdown">
                         <div class="profile__dropdown-wrap shadow-sm">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="dn">
+                                @csrf
+                            </form>
+
                             <a href="{{route('users.favorites')}}" class="profile__link">
                                 <i class="icon icon-heart"></i>
                                 Favourites
@@ -114,10 +118,6 @@
                                 <i class="icon icon-logout"></i>
                                 Log out
                             </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
                         </div>
                     </div>
                 </div>
