@@ -111,46 +111,46 @@
                         </div>
                     </div>
                 </div>
-                <div class="promos-show shadow-xs radius-md list-block">
-                    <div class="list-block__heading align-between">
-                        <div class="list-block__title h2-font">
-                            <i class="icon icon-star"></i>
-                            <span>Promos</span>
-                        </div>
-                        <a href="{{route('promos.index')}}" class="btn btn_main-light btn_sm">
-                            <span>All promos</span>
-                        </a>
-                    </div>
-                    <div class="list-block__body row md-cols-3">
-                        @foreach($promos as $promo)
-                        <div class="column sm-12">
-                            <a href="{{route('promos.show', ['promo' => $promo->entity_id])}}" class="game-card">
-                                <div class="game-card__img radius-xxs">
-                                    <img src="{{ \App\Helpers\PanelEntity::getEntityImage($promo->entityData->ed_image, 292, 292, 6) }}" alt="{{ $promo->entityDataLang->edl_title }}">
-                                </div>
-                                <div class="game-card__body">
-                                    <div class="game-card__title text-20 font-bold">{{ $promo->entityDataLang->edl_title }}</div>
-                                    <div class="game-card__date color-black-50">
-                                        <div class="date">
-                                            <i class="icon icon-clock"></i>
-                                            <span>{{\Carbon\Carbon::parse($promo->entityData->ed_datetime_1)->format('jS M Y')}} - {{\Carbon\Carbon::parse($promo->entityData->ed_datetime_2)->format('d M Y')}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="game-card__tags">
-                                        <div class="tags">
-                                            <div class="tags__wrap">
-                                                @foreach($promo->tags as $tag)
-                                                <div class="tag">{{$tag->entityDataLang->edl_title}}</div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
+{{--                <div class="promos-show shadow-xs radius-md list-block">--}}
+{{--                    <div class="list-block__heading align-between">--}}
+{{--                        <div class="list-block__title h2-font">--}}
+{{--                            <i class="icon icon-star"></i>--}}
+{{--                            <span>Promos</span>--}}
+{{--                        </div>--}}
+{{--                        <a href="{{route('promos.index')}}" class="btn btn_main-light btn_sm">--}}
+{{--                            <span>All promos</span>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                    <div class="list-block__body row md-cols-3">--}}
+{{--                        @foreach($promos as $promo)--}}
+{{--                        <div class="column sm-12">--}}
+{{--                            <a href="{{route('promos.show', ['promo' => $promo->entity_id])}}" class="game-card">--}}
+{{--                                <div class="game-card__img radius-xxs">--}}
+{{--                                    <img src="{{ \App\Helpers\PanelEntity::getEntityImage($promo->entityData->ed_image, 292, 292, 6) }}" alt="{{ $promo->entityDataLang->edl_title }}">--}}
+{{--                                </div>--}}
+{{--                                <div class="game-card__body">--}}
+{{--                                    <div class="game-card__title text-20 font-bold">{{ $promo->entityDataLang->edl_title }}</div>--}}
+{{--                                    <div class="game-card__date color-black-50">--}}
+{{--                                        <div class="date">--}}
+{{--                                            <i class="icon icon-clock"></i>--}}
+{{--                                            <span>{{\Carbon\Carbon::parse($promo->entityData->ed_datetime_1)->format('jS M Y')}} - {{\Carbon\Carbon::parse($promo->entityData->ed_datetime_2)->format('d M Y')}}</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="game-card__tags">--}}
+{{--                                        <div class="tags">--}}
+{{--                                            <div class="tags__wrap">--}}
+{{--                                                @foreach($promo->tags as $tag)--}}
+{{--                                                <div class="tag">{{$tag->entityDataLang->edl_title}}</div>--}}
+{{--                                                @endforeach--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="games-show shadow-xs radius-md list-block">
                     <div class="list-block__heading align-between">
                         <div class="list-block__title h2-font">
