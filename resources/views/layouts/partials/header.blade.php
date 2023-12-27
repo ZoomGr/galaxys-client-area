@@ -163,13 +163,13 @@
                     </div>
                     <div class="sidebar-link__title">Roadmap</div>
                 </a>
-                <a href="{{route('compliance.index')}}" class="sidebar-link {{Route::currentRouteName() == 'compliance.index' ? 'active' : ''}}">
-                    <div class="sidebar-link__icon">
-                        <img src="{{ asset('assets/img/theme/notebook.svg')}}" alt="Compliance">
-                        <img src="{{ asset('assets/img/theme/notebook-active.svg')}}" alt="Compliance">
-                    </div>
-                    <div class="sidebar-link__title">Compliance</div>
-                </a>
+{{--                <a href="{{route('compliance.index')}}" class="sidebar-link {{Route::currentRouteName() == 'compliance.index' ? 'active' : ''}}">--}}
+{{--                    <div class="sidebar-link__icon">--}}
+{{--                        <img src="{{ asset('assets/img/theme/notebook.svg')}}" alt="Compliance">--}}
+{{--                        <img src="{{ asset('assets/img/theme/notebook-active.svg')}}" alt="Compliance">--}}
+{{--                    </div>--}}
+{{--                    <div class="sidebar-link__title">Compliance</div>--}}
+{{--                </a>--}}
             </div>
             <div class="sidebar__nav-wrap">
                 <a href="{{route('news.index')}}" class="sidebar-link {{in_array(Route::currentRouteName(), ['news.index', 'news.show']) ? 'active' : ''}}">
@@ -179,13 +179,13 @@
                     </div>
                     <div class="sidebar-link__title">News</div>
                 </a>
-                <a href="{{route('promos.index')}}" class="sidebar-link {{in_array(Route::currentRouteName(), ['promo.index', 'promo.show']) ? 'active' : ''}}">
-                    <div class="sidebar-link__icon">
-                        <img src="{{ asset('assets/img/theme/star.svg')}}" alt="Promo">
-                        <img src="{{ asset('assets/img/theme/star-active.svg')}}" alt="Promo">
-                    </div>
-                    <div class="sidebar-link__title">Promo</div>
-                </a>
+{{--                <a href="{{route('promos.index')}}" class="sidebar-link {{in_array(Route::currentRouteName(), ['promo.index', 'promo.show']) ? 'active' : ''}}">--}}
+{{--                    <div class="sidebar-link__icon">--}}
+{{--                        <img src="{{ asset('assets/img/theme/star.svg')}}" alt="Promo">--}}
+{{--                        <img src="{{ asset('assets/img/theme/star-active.svg')}}" alt="Promo">--}}
+{{--                    </div>--}}
+{{--                    <div class="sidebar-link__title">Promo</div>--}}
+{{--                </a>--}}
             </div>
         </div>
         <div class="sidebar__info">

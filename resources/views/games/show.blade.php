@@ -65,42 +65,6 @@
                                         <div class="inner-block__details">
                                             <div class="inner-block__details-item">
                                                 {!! $game->entityDataLang->edl_text_1 !!}
-                                                <table>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Title</th>
-                                                            <th>Title</th>
-                                                            <th>Title</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Option 1</td>
-                                                            <td>Option 1</td>
-                                                            <td>Option 1</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Option 1</td>
-                                                            <td>Option 1</td>
-                                                            <td>Option 1</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Option 1</td>
-                                                            <td>Option 1</td>
-                                                            <td>Option 1</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Option 1</td>
-                                                            <td>Option 1</td>
-                                                            <td>Option 1</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Option 1</td>
-                                                            <td>Option 1</td>
-                                                            <td>Option 1</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
                                             </div>
                                         </div>
                                     </div>
