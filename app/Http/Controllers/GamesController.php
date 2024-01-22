@@ -71,7 +71,8 @@ class GamesController extends Controller
 //            $country_license->country = Helper::getCountry($country_license->entityData->ed_number_1);
 //        }
 
-        $s3_folder_name =  strtolower(str_replace(' ', '-', $game->entity_id .'-'. $game->entityDataLang->edl_title));
+        $s3_folder_name = $game->entityDataLang->edl_title;
+//        $s3_folder_name =  strtolower(str_replace(' ', '-', $game->entity_id .'-'. $game->entityDataLang->edl_title));
         $game->devices = $devices;
         $game->all_files = $this->media_service->getDirectoryDataWithSize($s3_folder_name);
         $add_favorite = true;

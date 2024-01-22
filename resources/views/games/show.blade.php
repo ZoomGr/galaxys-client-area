@@ -20,9 +20,9 @@
                 <div class="content__body">
                     <div class="content__heading">
                         <div class="inner-heading">
-                            <div class="inner-heading__icon">
+                            <a href="{{ route('games.index') }}" class="inner-heading__icon">
                                 <i class="icon icon-arrow-left"></i>
-                            </div>
+                            </a>
                             <div class="inner-heading__text">
                                 <a href="{{ route('games.index') }}" class="inner-heading__title title">
                                     {{ $game->entityDataLang->edl_title }}

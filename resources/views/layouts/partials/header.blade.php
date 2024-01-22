@@ -29,15 +29,15 @@
 {{--            </form>--}}
         </div>
         <div class="header__action">
-            @php $new_messages_count = $chat_notification_helper->getNewMessagesCount(); @endphp
-            <div class="header-badge messages-badge">
-                <a href="{{route('users.supports')}}" class="header-badge__wrap round-badge">
-                    @if($new_messages_count['messages'] > 0)
-                        <div class="header-badge__count">{{$new_messages_count['messages']}}</div>
-                    @endif
-                    <i class="icon icon-message"></i>
-                </a>
-            </div>
+            @php //$new_messages_count = $chat_notification_helper->getNewMessagesCount(); @endphp
+{{--            <div class="header-badge messages-badge">--}}
+{{--                <a href="{{route('users.supports')}}" class="header-badge__wrap round-badge">--}}
+{{--                    @if($new_messages_count['messages'] > 0)--}}
+{{--                        <div class="header-badge__count">{{$new_messages_count['messages']}}</div>--}}
+{{--                    @endif--}}
+{{--                    <i class="icon icon-message"></i>--}}
+{{--                </a>--}}
+{{--            </div>--}}
             <div class="header-badge notifies">
                 @php $new_nots_count = $chat_notification_helper->getNewNotificationsCount()['notification'] @endphp
                 <div class="header-badge__wrap round-badge">
@@ -101,10 +101,6 @@
                     </div>
                     <div class="profile__dropdown">
                         <div class="profile__dropdown-wrap shadow-sm">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="dn">
-                                @csrf
-                            </form>
-
                             <a href="{{route('users.favorites')}}" class="profile__link">
                                 <i class="icon icon-heart"></i>
                                 Favourites
@@ -118,6 +114,10 @@
                                 <i class="icon icon-logout"></i>
                                 Log out
                             </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -156,13 +156,13 @@
                     </div>
                     <div class="sidebar-link__title">Media Files</div>
                 </a>
-                <a href="{{route('games.roadmap')}}" class="sidebar-link {{Route::currentRouteName() == 'games.roadmap' ? 'active' : ''}}">
-                    <div class="sidebar-link__icon">
-                        <img src="{{ asset('assets/img/theme/calendar.svg')}}" alt="Roadmap">
-                        <img src="{{ asset('assets/img/theme/calendar-active.svg')}}" alt="Roadmap">
-                    </div>
-                    <div class="sidebar-link__title">Roadmap</div>
-                </a>
+{{--                <a href="{{route('games.roadmap')}}" class="sidebar-link {{Route::currentRouteName() == 'games.roadmap' ? 'active' : ''}}">--}}
+{{--                    <div class="sidebar-link__icon">--}}
+{{--                        <img src="{{ asset('assets/img/theme/calendar.svg')}}" alt="Roadmap">--}}
+{{--                        <img src="{{ asset('assets/img/theme/calendar-active.svg')}}" alt="Roadmap">--}}
+{{--                    </div>--}}
+{{--                    <div class="sidebar-link__title">Roadmap</div>--}}
+{{--                </a>--}}
 {{--                <a href="{{route('compliance.index')}}" class="sidebar-link {{Route::currentRouteName() == 'compliance.index' ? 'active' : ''}}">--}}
 {{--                    <div class="sidebar-link__icon">--}}
 {{--                        <img src="{{ asset('assets/img/theme/notebook.svg')}}" alt="Compliance">--}}

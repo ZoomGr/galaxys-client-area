@@ -19,9 +19,9 @@
                 <div class="content__body">
                     <div class="content__heading">
                         <div class="inner-heading">
-                            <div class="inner-heading__icon">
+                            <a href="{{route('news.index')}}" class="inner-heading__icon">
                                 <i class="icon icon-arrow-left"></i>
-                            </div>
+                            </a>
                             <div class="inner-heading__text">
                                 <a href="{{route('news.index')}}" class="inner-heading__title title">
                                     {{$news->entityDataLang->edl_title}}
@@ -55,7 +55,9 @@
                         <div class="inner-block__action">
                             <div class="explore-block">
                                 <div class="explore-block__img">
-                                    <img src="{{ \App\Helpers\PanelEntity::getEntityImage($news->entityData->ed_char_1, 424, 212, 6) }}" alt="explore">
+                                    @if(!empty($news->entityData->ed_char_1))
+                                        <img src="{{ \App\Helpers\PanelEntity::getEntityImage($news->entityData->ed_char_1, 424, 212, 6) }}" alt="explore">
+                                    @endif
                                 </div>
                                 <div class="explore-block__title text-24 font-bold text-center">
                                     {{$news->entityDataLang->edl_char_2}}
@@ -83,11 +85,13 @@
                                         </div>
                                     </div>
                                 </div> -->
-                                <div class="explore-block__btns">
-                                    <a href="{{$news->entityDataLang->edl_char_3}}" class="btn btn_gradient btn_sm fit">
-                                        <span>Explore More</span>
-                                    </a>
-                                </div>
+                                @if(!empty($news->entityDataLang->edl_char_3))
+                                    <div class="explore-block__btns">
+                                        <a href="{{$news->entityDataLang->edl_char_3}}" class="btn btn_gradient btn_sm fit">
+                                            <span>Explore More</span>
+                                        </a>
+                                    </div>
+                                @endif
                                 <!-- <div class="explore-block__btns">
                                     <a href="#" class="btn btn_main-border btn_sm">
                                         <span>See More</span>

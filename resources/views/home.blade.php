@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="column sm-12 md-8">
+        <div class="column sm-12 md-12">
             <div class="content__body">
                 <div class="latest-news shadow-xs radius-md list-block">
                     <div class="list-block__heading align-between">
@@ -166,17 +166,19 @@
                         <div class="column sm-12">
                             <a href="{{ route('games.show', ['game' => $game->entity_id]) }}" class="game-card">
                                 <div class="game-card__img radius-xxs">
-                                    <img src="{{ \App\Helpers\PanelEntity::getEntityImage($game->entityData->ed_image, 213, 268, 6) }}" alt="{{ $game->entityDataLang->edl_title }}">
+                                    <img src="{{ \App\Helpers\PanelEntity::getEntityImage($game->entityData->ed_image, 426, 536, 6) }}" alt="{{ $game->entityDataLang->edl_title }}">
 
                                     <div class="game-card__action game-card__action_fav">
                                         <i class="icon icon-heart"></i>
                                     </div>
-                                    <div class="game-card__action game-card__action_video">
-                                        <div class="btn btn_gradient btn_sm">
-                                            <i class="icon icon-play"></i>
-                                            <span>Video record</span>
+                                    @if(!empty($game->entityData->ed_char_1))
+                                        <div data-link="{{$game->entityData->ed_char_1}} class="game-card__action game-card__action_video">
+                                            <div class="btn btn_gradient btn_sm">
+                                                <i class="icon icon-play"></i>
+                                                <span>Video record</span>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                                 <div class="game-card__body">
                                     <div class="game-card__title text-20 font-semibold text-center">{{ $game->entityDataLang->edl_title }}</div>
@@ -188,50 +190,50 @@
                 </div>
             </div>
         </div>
-        <div class="column sm-12 md-4">
-            <div class="content-aside">
-                <div class="content-aside__thumb">
-                    <div class="upcoming-releases shadow-xs radius-md list-block">
-                        <div class="list-block__title h2-font">
-                            <i class="icon icon-calendar"></i>
-                            <span>Upcoming Releases</span>
-                        </div>
-                        <div class="upcoming-releases__list">
-                            @php $tomorrow = new DateTime('tomorrow'); @endphp
-                            @foreach($releases as $release)
-                            <div class="upcoming-release">
-                                <div class="upcoming-release__date">
-                                    <span class="text-12 font-semibold uppercase">{{$tomorrow->format('M')}}</span>
-                                    <span class="text-27 font-extrabold">{{$tomorrow->format('d')}}</span>
-                                </div>
-                                <div class="upcoming-release__body">
-                                    <div class="upcoming-release__type type-pair">
-                                        @if(new DateTime($release->entityData->ed_datetime_2) == $tomorrow)
-                                        <div class="type-dot type-dot_operators">
-                                            <span></span>
-                                        </div>
-                                        <span class="type-pair__name">For operators</span>
-                                        @else
-                                        <div class="type-dot type-dot_testing">
-                                            <span></span>
-                                        </div>
-                                        <span class="type-pair__name">For testing</span>
-                                        @endif
-                                    </div>
-                                    <div class="upcoming-release__name text-20 font-semibold">{{$release->entityDataLang->edl_title}}</div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                        <div class="upcoming-releases__btn">
-                            <a href="{{route('games.roadmap')}}" class="btn btn_main-light btn_sm fit">
-                                <span>See all</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+{{--        <div class="column sm-12 md-4">--}}
+{{--            <div class="content-aside">--}}
+{{--                <div class="content-aside__thumb">--}}
+{{--                    <div class="upcoming-releases shadow-xs radius-md list-block">--}}
+{{--                        <div class="list-block__title h2-font">--}}
+{{--                            <i class="icon icon-calendar"></i>--}}
+{{--                            <span>Upcoming Releases</span>--}}
+{{--                        </div>--}}
+{{--                        <div class="upcoming-releases__list">--}}
+{{--                            @php $tomorrow = new DateTime('tomorrow'); @endphp--}}
+{{--                            @foreach($releases as $release)--}}
+{{--                            <div class="upcoming-release">--}}
+{{--                                <div class="upcoming-release__date">--}}
+{{--                                    <span class="text-12 font-semibold uppercase">{{$tomorrow->format('M')}}</span>--}}
+{{--                                    <span class="text-27 font-extrabold">{{$tomorrow->format('d')}}</span>--}}
+{{--                                </div>--}}
+{{--                                <div class="upcoming-release__body">--}}
+{{--                                    <div class="upcoming-release__type type-pair">--}}
+{{--                                        @if(new DateTime($release->entityData->ed_datetime_2) == $tomorrow)--}}
+{{--                                        <div class="type-dot type-dot_operators">--}}
+{{--                                            <span></span>--}}
+{{--                                        </div>--}}
+{{--                                        <span class="type-pair__name">For operators</span>--}}
+{{--                                        @else--}}
+{{--                                        <div class="type-dot type-dot_testing">--}}
+{{--                                            <span></span>--}}
+{{--                                        </div>--}}
+{{--                                        <span class="type-pair__name">For testing</span>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
+{{--                                    <div class="upcoming-release__name text-20 font-semibold">{{$release->entityDataLang->edl_title}}</div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
+{{--                        <div class="upcoming-releases__btn">--}}
+{{--                            <a href="{{route('games.roadmap')}}" class="btn btn_main-light btn_sm fit">--}}
+{{--                                <span>See all</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 </div>
 @endsection

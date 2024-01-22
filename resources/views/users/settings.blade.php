@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="column sm-12 md-9">
+            <div class="column sm-12 md-12">
                 <div class="content__body tabs__content">
                     <div id="personal-details" class="tab-content active">
                         <form action="{{route('users.change-settings')}}" method="post" class="form-wrap shadow-xs radius-xs" name="personal_details">
@@ -150,31 +150,31 @@
                     </div>
                 </div>
             </div>
-            <div class="column sm-12 md-3">
-                <div class="content-aside">
-                    <div class="content-aside__thumb">
-                        <div class="discover-block radius-xs">
-                            <div class="discover-block__img">
-                                <img src="{{asset('assets/img/draft/discover.jpg')}}" alt="discover">
-                            </div>
-                            <div class="discover-block__content">
-                                <div class="discover-block__title text-24 font-bold color-white">
-                                    Wild West Heat
-                                </div>
-                                <div class="discover-block__desc text-14 color-black-10">
-                                    Following a previous collaboration with Armenia-based Peter & Sons and the
-                                    Following a previous collaboration with Armenia-based Peter & Sons and the
-                                </div>
-                                <div class="discover-block__btn">
-                                    <a href="#" class="btn btn_gradient btn_sm fit">
-                                        <span>Discover</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="column sm-12 md-3">--}}
+{{--                <div class="content-aside">--}}
+{{--                    <div class="content-aside__thumb">--}}
+{{--                        <div class="discover-block radius-xs">--}}
+{{--                            <div class="discover-block__img">--}}
+{{--                                <img src="{{asset('assets/img/draft/discover.jpg')}}" alt="discover">--}}
+{{--                            </div>--}}
+{{--                            <div class="discover-block__content">--}}
+{{--                                <div class="discover-block__title text-24 font-bold color-white">--}}
+{{--                                    Wild West Heat--}}
+{{--                                </div>--}}
+{{--                                <div class="discover-block__desc text-14 color-black-10">--}}
+{{--                                    Following a previous collaboration with Armenia-based Peter & Sons and the--}}
+{{--                                    Following a previous collaboration with Armenia-based Peter & Sons and the--}}
+{{--                                </div>--}}
+{{--                                <div class="discover-block__btn">--}}
+{{--                                    <a href="#" class="btn btn_gradient btn_sm fit">--}}
+{{--                                        <span>Discover</span>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 @endsection
