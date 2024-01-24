@@ -669,6 +669,7 @@ function get_path_data(path) {
         }
 
         let br_content = '';
+        let current_path = '';
 
         if ($(".all-medias-content").hasClass('root-files')) {
             if (breadcrumb.length == 0) {
@@ -681,6 +682,12 @@ function get_path_data(path) {
                     '<i class="icon icon-chevron-right"></i>'+
                     '</a>';
             }
+        } else {
+            let br_index = breadcrumb.indexOf(game_parent);
+            if (br_index !== -1) {
+                breadcrumb.splice(br_index, 1);
+                current_path = game_parent;
+            }
         }
 
         if (breadcrumb.length == 1) {
@@ -688,9 +695,8 @@ function get_path_data(path) {
                 '<span>' + breadcrumb[0] + '</span>'+
                 '</div>';
         } else {
-            let current_path = '';
             for(let i = 0; i < breadcrumb.length; i++) {
-                if (i === 0) {
+                if (i === 0 && current_path == '') {
                     current_path += breadcrumb[i];
                 } else {
                     current_path += '/' + breadcrumb[i];

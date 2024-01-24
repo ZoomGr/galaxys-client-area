@@ -251,7 +251,7 @@
                                             <div class="media-files__breadcrumb breadcrumb">
                                                 <div class="breadcrumb__wrap">
                                                     <div class="breadcrumb__item">
-                                                        <span>{{$s3_folder_name}}</span>
+                                                        <span>{{$game->entityDataLang->edl_title}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -283,4 +283,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        let game_parent = '{{$game->entityDataLang->edl_text_2}}';
+    </script>
 @endsection
