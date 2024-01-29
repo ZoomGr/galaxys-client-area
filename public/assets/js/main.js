@@ -263,6 +263,8 @@ $(document).ready(function () {
             }
 
             if(fileLinks.length) {
+                let messageToastId = toastMessage("Your download will begin shortly", "default", true);
+
                 $.ajax({
                     method: "POST",
                     url: "/medias/get-files-url",
@@ -273,16 +275,16 @@ $(document).ready(function () {
                     type: "POST",
                     data: { files_array: fileLinks },
                     success: function ({ data }) {
-                        // const urls = data.map((link, index) => {
-                        //     let filename = $(`.media-link[data-file="${fileLinks[index]}"]`).closest(".media-table__file").find(".media-table__name > span").text();
+                        const urls = data.map((link, index) => {
+                            let filename = $(`.media-link[data-file="${fileLinks[index]}"]`).closest(".media-table__file").find(".media-table__name > span").text();
 
-                        //     return {
-                        //         download: link,
-                        //         filename: filename || 'unNamed',
-                        //     }
-                        // });
+                            return {
+                                download: link,
+                                filename: filename || 'unNamed',
+                            }
+                        });
 
-                        // downloadFilesZip(urls);
+                        downloadFilesZip(urls, 'Media Files.zip', messageToastId);
                     },
                     error: function (err) {
                         toastMessage('Something was wrong!', 'error');
@@ -449,11 +451,6 @@ $(document).ready(function () {
             }
         }, 1000);
     }
-
-    // TOAST ****************************
-    $(".toast-trigger").on("click", function () {
-        toastMessage("Toast Message", "default");
-    });
 
     // DATEPICKER ************************
     if($(".event-datepicker").length) {

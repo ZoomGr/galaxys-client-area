@@ -114,16 +114,19 @@ function generateId(length) {
     return result;
 }
 
-function toastMessage(message, type = "default") {
+function toastMessage(message, type = "default", manualRemove = false) {
     let toastContainer = `<div class="toast-messages"></div>`;
     const toastId = generateId(7);
     const imgSrc = type === "error" ? "warning" : "success";
 
     let toastBody = `
     <div class="toast-message ${type}" data-toast-id="${toastId}">
-        <div class="toast-message-icon">
-            <img src="assets/img/${imgSrc}.svg" alt="${imgSrc}">
-        </div>
+        ${
+            type !== 'default' ?
+            `<div class="toast-message-icon">
+                <img src="assets/img/${imgSrc}.svg" alt="${imgSrc}">
+            </div>` : ''
+        }
         <span class="toast-message-text text-20 font-medium color-black-80">${message}</span>
     </div>`;
 
@@ -132,10 +135,14 @@ function toastMessage(message, type = "default") {
     }
     $(".toast-messages").append(toastBody);
 
-    autoRemoveToast(toastId);
+    if(manualRemove) {
+        return toastId;
+    } else {
+        autoRemoveToast(toastId);
+    }
 }
 
-async function downloadFilesZip(urls, title = 'Media Files.zip') {
+async function downloadFilesZip(urls, title = 'Media Files.zip', messageToastId = false) {
     let zip = new JSZip();
 
     // Wait until all files added to zip
@@ -150,6 +157,9 @@ async function downloadFilesZip(urls, title = 'Media Files.zip') {
     zip.generateAsync({ type: "blob" }).then(function(content) {
         saveAs(content, title);
     });
+    if(messageToastId) {
+        removeToast(false, messageToastId);
+    }
 }
 
 function getFileExtensionByName(filename) {
