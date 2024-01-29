@@ -30,6 +30,15 @@
             width: rem(56);
         }
     }
+
+    &.default {
+        background-color: map-get($color-scheme, 'black-80');
+        color: #fff;
+
+        .color-black-80 {
+            color: inherit;
+        }
+    }
 }
 
 @media (max-width: $media-sm) {
