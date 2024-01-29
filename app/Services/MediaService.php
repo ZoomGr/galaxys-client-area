@@ -140,7 +140,7 @@ class MediaService implements MediaRepository
     }
 
     protected function getMymeType (string $path) {
-        return Storage::disk(self::DISK)->lastModified($path);
+        return Storage::disk(self::DISK)->mimeType($path);
     }
 
     protected function getTemporaryUrl (string $path) {

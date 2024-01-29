@@ -35,10 +35,10 @@
                                 <div class="media-files__download">
                                     <span class="media-files__selected"></span>
                                     <div class="media-files__download-btn">
-                                        <a href="#" download="" class="media-download-all btn btn_sm color-main">
+                                        <div class="media-download-all btn btn_sm color-main">
                                             <i class="icon icon-download"></i>
                                             <span>Download All</span>
-                                        </a>
+                                        </div>
                                         <div class="media-download-selected btn btn_sm color-main">
                                             <i class="icon icon-download"></i>
                                             <span>Download Selected</span>

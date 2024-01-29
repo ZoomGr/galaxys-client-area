@@ -156,6 +156,28 @@ function getFileExtensionByName(filename) {
     return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename) : undefined;
 }
 
+function writeClipboardText(text, successMessage) {
+    try {
+        navigator.clipboard
+            .readText().then(async (clipboardText) => {
+                if(clipboardText !== text) {
+                    try {
+                        await navigator.clipboard
+                            .writeText(text)
+                                .then(() => {
+                                    toastMessage(successMessage, 'success')
+                                });
+                    } catch (error) {
+                        toastMessage('Something went wrong!', 'error');
+                    }
+                }
+            },
+        );
+    } catch (error) {
+        toastMessage('Something went wrong!', 'error');
+    }
+}
+
 function autoRemoveToast(id) {
     new Promise(function (resolve, reject) {
         setTimeout(function () {

@@ -188,6 +188,7 @@ $(document).ready(function () {
                 }
             }
 
+            // Copy Link Btn
             if($(e.target).closest(".media-link, .properties__item").length) {
                 const $this = $(e.target).closest(".media-link, .properties__item");
 
@@ -203,15 +204,8 @@ $(document).ready(function () {
                     success: function (data) {
                         if (data != undefined && data.status == 200) {
                             $this.select();
-                            toastMessage('Copied! File available only 10 minutes', 'success');
-                            // navigator.clipboard
-                            //     .writeText(data.url)
-                            //     .then(() => {
-                            //         toastMessage('Copied! File available only 10 minutes', 'success')
-                            //     })
-                            //     .catch(() => {
-                            //         toastMessage('Something was wrong!', 'error');
-                            //     });
+                            
+                            writeClipboardText(data.url, 'Copied! File available only 10 minutes');
                         }
                     },
                     error: function (err) {
@@ -255,10 +249,20 @@ $(document).ready(function () {
             });
         });
 
-        $(".media-download-selected").on("click", function() {
-            const fileLinks = $(this).attr("data-files")?.split(", ");
+        $(".media-download-selected, .media-download-all").on("click", function() {
+            let fileLinks = [];
+            
+            if($(this).hasClass("media-download-selected")) {
+                fileLinks = $(this).attr("data-files")?.split(", ");
+            } else {
+                $(".media-table__btn.media-link").each(function() {
+                    if($(this).attr("data-file")) {
+                        fileLinks = [...fileLinks, $(this).attr("data-file")];
+                    }
+                });
+            }
 
-            if(fileLinks) {
+            if(fileLinks.length) {
                 $.ajax({
                     method: "POST",
                     url: "/medias/get-files-url",
@@ -269,16 +273,16 @@ $(document).ready(function () {
                     type: "POST",
                     data: { files_array: fileLinks },
                     success: function ({ data }) {
-                        const urls = data.map((link, index) => {
-                            let filename = $(`.media-link[data-file="${fileLinks[index]}"]`).closest(".media-table__file").find(".media-table__name > span").text();
+                        // const urls = data.map((link, index) => {
+                        //     let filename = $(`.media-link[data-file="${fileLinks[index]}"]`).closest(".media-table__file").find(".media-table__name > span").text();
 
-                            return {
-                                download: link,
-                                filename: filename || 'unNamed',
-                            }
-                        });
+                        //     return {
+                        //         download: link,
+                        //         filename: filename || 'unNamed',
+                        //     }
+                        // });
 
-                        downloadFilesZip(urls);
+                        // downloadFilesZip(urls);
                     },
                     error: function (err) {
                         toastMessage('Something was wrong!', 'error');

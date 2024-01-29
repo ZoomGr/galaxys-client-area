@@ -30,7 +30,8 @@ class MediaController extends Controller
         try {
             if(isset($request->files_array)) {
                 foreach ($request->files_array as $file) {
-                    $s3_files_url[] = $this->media_service->getFileUrl($file);
+                    $s3_base_64_file = $this->media_service->getFileBase64($file);
+                    $s3_files_url[] = 'data:' .$s3_base_64_file['mimeType']. ';base64,'. $s3_base_64_file['base64'];
                 }
                 return response()->json(['status' => 200, 'data' => $s3_files_url]);
             }
