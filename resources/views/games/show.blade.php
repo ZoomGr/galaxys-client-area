@@ -8,8 +8,8 @@
 
 @section('styles')
     <!-- Page Css -->
-    <link rel="stylesheet" href="{{asset('assets/css/pages/inner.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/pages/media-files.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/inner.css?') . filemtime('assets/css/pages/inner.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/media-files.css?') . filemtime('assets/css/pages/media-files.css')}}">
     <!-- ========================== -->
 @endsection
 

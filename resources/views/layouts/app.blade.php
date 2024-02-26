@@ -35,10 +35,10 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="{{asset('assets/css/libs.css.php')}}" />
-    <link rel="preload" as="style" href="{{asset('assets/css/top.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/top.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/theme.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
+    <link rel="preload" as="style" href="{{asset('assets/css/top.css?') . filemtime('assets/css/top.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/top.css?') . filemtime('assets/css/top.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/theme.css?') . filemtime('assets/css/theme.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/app.css?') . filemtime('assets/css/app.css')}}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -62,9 +62,9 @@
     </main>
     @yield('startScripts')
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script defer src="{{asset('assets/js/libs.js.php')}}"></script>
-    <script defer src="{{asset('assets/js/utils/functions.js')}}"></script>
-    <script defer src="{{asset('assets/js/main.js')}}"></script>
+    <script defer src="{{asset('assets/js/libs.js.php?') . filemtime('assets/js/libs.js.php')}}"></script>
+    <script defer src="{{asset('assets/js/utils/functions.js?') . filemtime('assets/js/utils/functions.js')}}"></script>
+    <script defer src="{{asset('assets/js/main.js?') . filemtime('assets/js/main.js') }}"></script>
 
     @yield('scripts')
 </body>
