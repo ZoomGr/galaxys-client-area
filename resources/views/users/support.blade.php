@@ -14,7 +14,7 @@
 
 @section('styles')
     <!-- Page Css -->
-    <link rel="stylesheet" href="{{asset('assets/css/pages/support.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/support.css?') . filemtime('assets/css/pages/support.css')}}">
     <!-- ========================== -->
 @endsection
 @section('content')
@@ -143,5 +143,5 @@
     <script>
         const basePath = "{{ env('APP_URL') }}";
     </script>
-    <script defer src="{{asset('assets/js/support.js')}}"></script>
+    <script defer src="{{asset('assets/js/support.js?') . filemtime('assets/js/support.js')}}"></script>
 @endsection
