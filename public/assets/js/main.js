@@ -120,6 +120,14 @@ $(document).ready(function () {
                     }
                 }
             });
+        } else {
+            $.map($('.media-card__name'), function (element, i) {
+                $(element).closest('.column').removeClass('dn');
+            });
+
+            $.map($('.media-table__name .file-name'), function (element, i) {
+                $(element).closest('tr').removeClass('dn');
+            });
         }
 
     });
@@ -204,7 +212,7 @@ $(document).ready(function () {
                     success: function (data) {
                         if (data != undefined && data.status == 200) {
                             $this.select();
-                            
+
                             writeClipboardText(data.url, 'Copied! File available only 10 minutes');
                         }
                     },
@@ -251,7 +259,7 @@ $(document).ready(function () {
 
         $(".media-download-selected, .media-download-all").on("click", function() {
             let fileLinks = [];
-            
+
             if($(this).hasClass("media-download-selected")) {
                 fileLinks = $(this).attr("data-files")?.split(", ");
             } else {
