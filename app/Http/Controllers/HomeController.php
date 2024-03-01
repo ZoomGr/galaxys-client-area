@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $slider = PanelEntity::getMultiple(['entity_parent' => ID_SLIDER]);
+        $slider = PanelEntity::getMultiple(['entity_parent' => ID_SLIDER], false, ['entity_order' => 'DESC']);
         $latest_news = PanelEntity::getMultiple(['entity_parent' => ID_NEWS, 'entityData' => ['ed_number_1' => null]], false, ['entity_update_date' => 'DESC'], false, 4)->toArray();
         $games = PanelEntity::getMultiple(['entity_parent' => ID_GAMES], false, ['entity_update_date' => 'DESC'], false, 4);
         $promos = PanelEntity::getMultiple(['entity_parent' => ID_PROMOS], false, ['entity_update_date' => 'DESC'], false, 3);
