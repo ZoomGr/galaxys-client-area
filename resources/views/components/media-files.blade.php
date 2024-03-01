@@ -68,7 +68,7 @@
                 </tr>
             @endforeach
             @endif
-            @if(isset($path_data['directories']))
+            @if(isset($path_data['files']))
                 @foreach($path_data['files'] as $file)
                 <tr class="media-table__file" >
                     <td>
@@ -79,6 +79,8 @@
                                 @php $path = 'assets/img/exel.svg'; @endphp
                             @elseif($file['extension'] == 'pdf')
                                 @php $path = "assets/img/pdf.svg"; @endphp
+                            @elseif($file['extension'] == 'psd')
+                                @php $path = "assets/img/psd.svg"; @endphp
                                 {{--                                                                @elseif($file['extension'] == 'svg')--}}
                                 {{--                                                                    @php $path = "assets/img/pdf.svg"; @endphp--}}
                             @endif
@@ -201,6 +203,8 @@
                                 @php $path = 'assets/img/exel.svg'; @endphp
                             @elseif($file['extension'] == 'pdf')
                                 @php $path = "assets/img/pdf.svg"; @endphp
+                            @elseif($file['extension'] == 'psd')
+                                @php $path = "assets/img/psd.svg"; @endphp
                             @endif
                             <div class="media-card__img">
                                 <img src="{{asset($path)}}" alt="{{$file['basename']}}">
