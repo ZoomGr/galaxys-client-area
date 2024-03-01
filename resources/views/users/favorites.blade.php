@@ -61,242 +61,256 @@
                         @endif
                         @if(isset($favorites['File']))
                             <div id="favourite-files" class="tab-content">
-                            <div class="media-files shadow-xs radius-md tabs">
-                                <div class="media-files__heading">
-                                    <div class="media-files__top">
-                                        <div class="media-files__breadcrumb breadcrumb">
-                                            <div class="breadcrumb__wrap">
+                                <div class="media-files shadow-xs radius-md tabs">
+                                    <div class="media-files__heading">
+                                        <div class="media-files__top">
+                                            <div class="media-files__breadcrumb breadcrumb">
+                                                <div class="breadcrumb__wrap">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="media-files__download">
-                                            <span class="media-files__selected"></span>
-                                            <div class="media-files__download-btn">
-                                                <a href="#" download="" class="media-download-all btn btn_sm color-main">
-                                                    <i class="icon icon-download"></i>
-                                                    <span>Download All</span>
-                                                </a>
-                                                <div class="media-download-selected btn btn_sm color-main">
-                                                    <i class="icon icon-download"></i>
-                                                    <span>Download Selected</span>
+                                            <div class="media-files__download">
+                                                <span class="media-files__selected"></span>
+                                                <div class="media-files__download-btn">
+                                                    <a href="#" download="" class="media-download-all btn btn_sm color-main">
+                                                        <i class="icon icon-download"></i>
+                                                        <span>Download All</span>
+                                                    </a>
+                                                    <div class="media-download-selected btn btn_sm color-main">
+                                                        <i class="icon icon-download"></i>
+                                                        <span>Download Selected</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        @include('components.media-files-filters')
                                     </div>
-                                    @include('components.media-files-filters')
-                                </div>
-                                <div class="tabs__content all-medias-content root-files">
-                                    <div id="media-files-list" class="tab-content {{ !@Request::has('media') || @Request::get('media') != 'media-files-grid' ? 'active' : '' }}">
-                                        <table class="media-table">
-                                            <thead>
-                                            <tr>
-                                                <th>
-                                                    <div class="media-select-all">
-                                                        <label class="custom-check custom-check_checkbox">
-                                                            <input type="checkbox" name="media-select-all">
-                                                            <span class="custom-check__checkmark"></span>
-                                                            <span class="payment-info__label">Name</span>
-                                                        </label>
-                                                    </div>
-                                                </th>
-                                                <th>
-                                                    <div class="media-date-sort cursor inline-flex align-middle">
-                                                        Date Modified
-                                                        <i class="icon icon-arrow-down"></i>
-                                                    </div>
-                                                </th>
-                                                <th>File Size</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if (count($favorites->all_files))
-                                                @if(isset($favorites->all_files['directories']))
-                                                    @foreach($favorites->all_files['directories'] as $directory)
-                                                        <tr class="media-table__file">
-                                                            <td>
-                                                                <div class="media-table__name">
-                                                                    <a href="{{route('medias.index') .'?path='. $directory['path']}}">
-                                                                        <img width="24" height="24" src="{{asset("assets/img/folder.png")}}" alt="file preview">
-                                                                        <span class="file-name type-dir">{{$directory['basename']}}</span>
-                                                                    </a>
-                                                                    <label class="custom-check custom-check_checkbox">
-                                                                        <input type="checkbox" name="file-2">
-                                                                        <span class="custom-check__checkmark"></span>
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="color-black-40">
-                                                                    {{--                                                                {{\Carbon\Carbon::createFromTimestamp($directory['timestamp'])->format('d.m.Y h:m')}}--}}
-                                                                    -
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="color-black-40">
-                                                                    {{--                                                                {{\App\Helpers\Helper::formatSizeUnits($directory['size'])}}--}}
-                                                                    -
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="media-table__action">
-                                                                    {{--                                                                <div class="media-table__btn media-link">--}}
-                                                                    {{--                                                                    <i class="icon icon-link"></i>--}}
-                                                                    {{--                                                                </div>--}}
-        {{--                                                            <a href="{{route('medias.download-folder') . '?path='.$directory['path'] }}" download="{{$directory['basename']}}" class="media-table__btn media-download">--}}
-        {{--                                                                <i class="icon icon-download"></i>--}}
-        {{--                                                            </a>--}}
-                                                                    <div class="media-table__btn update-favorite-files {{\App\Models\Favorite::favFile($directory['path']) ? 'active' : ''}}" data-favoriteFile="{{$directory['path']}}">
-                                                                        <i class="icon icon-heart"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                @endif
-                                                @if(isset($favorites->all_files['files']))
-                                                    @foreach($favorites->all_files['files'] as $file)
-                                                    <tr class="media-table__file">
-                                                        <td>
-                                                            <div class="media-table__name">
-                                                                @if($file['extension'] == 'png' || $file['extension'] == 'jpg' || $file['extension'] == 'webp')
-                                                                    @php $path = 'assets/img/png.png'; @endphp
-                                                                @elseif($file['extension'] == 'xlsx')
-                                                                    @php $path = 'assets/img/exel.svg'; @endphp
-                                                                @elseif($file['extension'] == 'pdf')
-                                                                    @php $path = "assets/img/pdf.svg"; @endphp
-                                                                    {{--                                                                @elseif($file['extension'] == 'svg')--}}
-                                                                    {{--                                                                    @php $path = "assets/img/pdf.svg"; @endphp--}}
-                                                                @endif
-                                                                <img width="24" height="24" src="{{asset($path)}}" alt="file preview">
-                                                                <span class="file-name type-{{$file['extension']}}">{{$file['basename']}}</span>
-
-                                                                <label class="custom-check custom-check_checkbox">
-                                                                    <input type="checkbox" name="file-1">
-                                                                    <span class="custom-check__checkmark"></span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="color-black-40">{{\Carbon\Carbon::createFromTimestamp($file['timestamp'])->format('d.m.Y h:m')}}</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="color-black-40">{{\App\Helpers\Helper::formatSizeUnits($file['size'])}}</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="media-table__action">
-                                                                <div class="media-table__btn media-link" data-file="{{$file['path']}}">
-                                                                    <i class="icon icon-link"></i>
-                                                                </div>
-                                                                {{--                                                                <form method="POST" action="{{route('medias.download-file')}}" class="media-table__btn media-download">--}}
-                                                                {{--                                                                    @csrf--}}
-                                                                {{--                                                                    <input type="hidden" name="path" value="{{$file['path']}}">--}}
-                                                                {{--                                                                    <button type="submit"  class="media-table__btn media-download">--}}
-                                                                {{--                                                                        <i class="icon icon-download"></i>--}}
-                                                                {{--                                                                    </button>--}}
-                                                                {{--                                                                </form>--}}
-                                                                <a href="{{route('medias.download-file'). '?path='. $file['path']}}" download="{{$file['basename']}}" class="media-table__btn media-download">
-                                                                    <i class="icon icon-download"></i>
-                                                                </a>
-                                                                <div class="media-table__btn update-favorite-files {{\App\Models\Favorite::favFile($file['path']) ? 'active' : ''}}" data-favoriteFile="{{$file['path']}}">
-                                                                    <i class="icon icon-heart"></i>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                                @endif
-                                            @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div id="media-files-grid" class="tab-content {{ @Request::has('media') && @Request::get('media') == 'media-files-grid' ? 'active' : '' }}">
-                                        <div class="media-list">
-                                            <div class="row">
+                                    <div class="tabs__content all-medias-content root-files">
+                                        <div id="media-files-list" class="tab-content {{ !@Request::has('media') || @Request::get('media') != 'media-files-grid' ? 'active' : '' }}">
+                                            <table class="media-table">
+                                                <thead>
+                                                <tr>
+                                                    <th>
+                                                        <div class="media-select-all">
+                                                            <label class="custom-check custom-check_checkbox">
+                                                                <input type="checkbox" name="media-select-all">
+                                                                <span class="custom-check__checkmark"></span>
+                                                                <span class="payment-info__label">Name</span>
+                                                            </label>
+                                                        </div>
+                                                    </th>
+                                                    <th>
+                                                        <div class="media-date-sort cursor inline-flex align-middle">
+                                                            Date Modified
+                                                            <i class="icon icon-arrow-down"></i>
+                                                        </div>
+                                                    </th>
+                                                    <th>File Size</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
                                                 @if (count($favorites->all_files))
                                                     @if(isset($favorites->all_files['directories']))
                                                         @foreach($favorites->all_files['directories'] as $directory)
-                                                        <div class="column sm-12 md-3">
-                                                            <div class="media-card">
-                                                                <div class="media-card__heading">
-                                                                    <div class="media-card__name type-dir">{{$directory['basename']}}</div>
-                                                                    <div class="media-card__action">
-    {{--                                                                    <a href="{{route('medias.download-folder') . '?path='.$directory['path'] }}" download="{{$directory['basename']}}" class="media-card__download">--}}
-    {{--                                                                        <i class="icon icon-download"></i>--}}
-    {{--                                                                    </a>--}}
-                                                                        <div class="media-card__properties properties">
-                                                                            <div class="properties__target">
-                                                                                <i class="icon icon-properties"></i>
-                                                                            </div>
-                                                                            <div class="properties__dropdown">
-    {{--                                                                            <div class="properties__item">--}}
-    {{--                                                                                <i class="icon icon-link"></i>--}}
-    {{--                                                                                <span>Link to file</span>--}}
-    {{--                                                                            </div>--}}
-                                                                                <div class="properties__item update-favorite-files {{\App\Models\Favorite::favFile($directory['path']) ? 'active' : ''}}" data-favoriteFile="{{$directory['path']}}">
-                                                                                    <i class="icon icon-heart"></i>
-                                                                                    <span>Add to favourites</span>
-                                                                                </div>
-                                                                            </div>
+                                                            <tr class="media-table__file">
+                                                                <td>
+                                                                    <div class="media-table__name">
+                                                                        <a href="{{route('medias.index') .'?path='. $directory['path']}}">
+                                                                            <img width="24" height="24" src="{{asset("assets/img/folder.png")}}" alt="file preview">
+                                                                            <span class="file-name type-dir">{{$directory['basename']}}</span>
+                                                                        </a>
+                                                                        <label class="custom-check custom-check_checkbox">
+                                                                            <input type="checkbox" name="file-2">
+                                                                            <span class="custom-check__checkmark"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="color-black-40">
+                                                                        {{--                                                                {{\Carbon\Carbon::createFromTimestamp($directory['timestamp'])->format('d.m.Y h:m')}}--}}
+                                                                        -
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="color-black-40">
+                                                                        {{--                                                                {{\App\Helpers\Helper::formatSizeUnits($directory['size'])}}--}}
+                                                                        -
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="media-table__action">
+                                                                        {{--                                                                <div class="media-table__btn media-link">--}}
+                                                                        {{--                                                                    <i class="icon icon-link"></i>--}}
+                                                                        {{--                                                                </div>--}}
+                                                                        {{--                                                            <a href="{{route('medias.download-folder') . '?path='.$directory['path'] }}" download="{{$directory['basename']}}" class="media-table__btn media-download">--}}
+                                                                        {{--                                                                <i class="icon icon-download"></i>--}}
+                                                                        {{--                                                            </a>--}}
+                                                                        <div class="media-table__btn update-favorite-files {{\App\Models\Favorite::favFile($directory['path']) ? 'active' : ''}}" data-favoriteFile="{{$directory['path']}}">
+                                                                            <i class="icon icon-heart"></i>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="media-card__img">
-                                                                    <a href="{{route('medias.index') .'?path='. $directory['path']}}">
-                                                                        <img src="{{asset('assets/img/folder-preview.svg')}}" alt="media file">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     @endif
                                                     @if(isset($favorites->all_files['files']))
                                                         @foreach($favorites->all_files['files'] as $file)
-                                                        <div class="column sm-12 md-3">
-                                                            <div class="media-card">
-                                                                <div class="media-card__heading">
-                                                                    <div class="media-card__name type-{{$file['extension']}}">{{$file['basename']}}</div>
-                                                                    <div class="media-card__action">
-                                                                        <a href="{{route('medias.download-file'). '?path='. $file['path']}}" download="{{$file['basename']}}" class="media-card__download">
+                                                            <tr class="media-table__file">
+                                                                <td>
+                                                                    <div class="media-table__name">
+                                                                        @php $path = 'assets/img/default.png'; @endphp
+                                                                        @if($file['extension'] == 'png' || $file['extension'] == 'jpg' || $file['extension'] == 'webp')
+                                                                            @php $path = 'assets/img/png.png'; @endphp
+                                                                        @elseif($file['extension'] == 'xlsx')
+                                                                            @php $path = 'assets/img/exel.svg'; @endphp
+                                                                        @elseif($file['extension'] == 'pdf')
+                                                                            @php $path = "assets/img/pdf.svg"; @endphp
+                                                                        @elseif($file['extension'] == 'psd')
+                                                                            @php $path = "assets/img/psd.svg"; @endphp
+                                                                        @elseif($file['extension'] == 'mp4')
+                                                                            @php $path = "assets/img/mp4.svg"; @endphp
+                                                                        @elseif($file['extension'] == 'tif')
+                                                                            @php $path = "assets/img/tif.svg"; @endphp
+                                                                            {{--                                                                @elseif($file['extension'] == 'svg')--}}
+                                                                            {{--                                                                    @php $path = "assets/img/pdf.svg"; @endphp--}}
+                                                                        @endif
+                                                                        <img width="24" height="24" src="{{asset($path)}}" alt="file preview">
+                                                                        <span class="file-name type-{{$file['extension']}}">{{$file['basename']}}</span>
+
+                                                                        <label class="custom-check custom-check_checkbox">
+                                                                            <input type="checkbox" name="file-1">
+                                                                            <span class="custom-check__checkmark"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="color-black-40">{{\Carbon\Carbon::createFromTimestamp($file['timestamp'])->format('d.m.Y h:m')}}</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="color-black-40">{{\App\Helpers\Helper::formatSizeUnits($file['size'])}}</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="media-table__action">
+                                                                        <div class="media-table__btn media-link" data-file="{{$file['path']}}">
+                                                                            <i class="icon icon-link"></i>
+                                                                        </div>
+                                                                        {{--                                                                <form method="POST" action="{{route('medias.download-file')}}" class="media-table__btn media-download">--}}
+                                                                        {{--                                                                    @csrf--}}
+                                                                        {{--                                                                    <input type="hidden" name="path" value="{{$file['path']}}">--}}
+                                                                        {{--                                                                    <button type="submit"  class="media-table__btn media-download">--}}
+                                                                        {{--                                                                        <i class="icon icon-download"></i>--}}
+                                                                        {{--                                                                    </button>--}}
+                                                                        {{--                                                                </form>--}}
+                                                                        <a href="{{route('medias.download-file'). '?path='. $file['path']}}" download="{{$file['basename']}}" class="media-table__btn media-download">
                                                                             <i class="icon icon-download"></i>
                                                                         </a>
-                                                                        <div class="media-card__properties properties">
-                                                                            <div class="properties__target">
-                                                                                <i class="icon icon-properties"></i>
-                                                                            </div>
-                                                                            <div class="properties__dropdown">
-                                                                                <div class="properties__item" data-file="{{$file['path']}}">
-                                                                                    <i class="icon icon-link"></i>
-                                                                                    <span>Link to file</span>
-                                                                                </div>
-                                                                                <div class="properties__item update-favorite-files {{\App\Models\Favorite::favFile($file['path']) ? 'active' : ''}}" data-favoriteFile="{{$file['path']}}">
-                                                                                    <i class="icon icon-heart"></i>
-                                                                                    <span>Add to favourites</span>
+                                                                        <div class="media-table__btn update-favorite-files {{\App\Models\Favorite::favFile($file['path']) ? 'active' : ''}}" data-favoriteFile="{{$file['path']}}">
+                                                                            <i class="icon icon-heart"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @endif
+                                                @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="media-files-grid" class="tab-content {{ @Request::has('media') && @Request::get('media') == 'media-files-grid' ? 'active' : '' }}">
+                                            <div class="media-list">
+                                                <div class="row">
+                                                    @if (count($favorites->all_files))
+                                                        @if(isset($favorites->all_files['directories']))
+                                                            @foreach($favorites->all_files['directories'] as $directory)
+                                                                <div class="column sm-12 md-3">
+                                                                    <div class="media-card">
+                                                                        <div class="media-card__heading">
+                                                                            <div class="media-card__name type-dir">{{$directory['basename']}}</div>
+                                                                            <div class="media-card__action">
+                                                                                {{--                                                                    <a href="{{route('medias.download-folder') . '?path='.$directory['path'] }}" download="{{$directory['basename']}}" class="media-card__download">--}}
+                                                                                {{--                                                                        <i class="icon icon-download"></i>--}}
+                                                                                {{--                                                                    </a>--}}
+                                                                                <div class="media-card__properties properties">
+                                                                                    <div class="properties__target">
+                                                                                        <i class="icon icon-properties"></i>
+                                                                                    </div>
+                                                                                    <div class="properties__dropdown">
+                                                                                        {{--                                                                            <div class="properties__item">--}}
+                                                                                        {{--                                                                                <i class="icon icon-link"></i>--}}
+                                                                                        {{--                                                                                <span>Link to file</span>--}}
+                                                                                        {{--                                                                            </div>--}}
+                                                                                        <div class="properties__item update-favorite-files {{\App\Models\Favorite::favFile($directory['path']) ? 'active' : ''}}" data-favoriteFile="{{$directory['path']}}">
+                                                                                            <i class="icon icon-heart"></i>
+                                                                                            <span>Add to favourites</span>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="media-card__img">
+                                                                            <a href="{{route('medias.index') .'?path='. $directory['path']}}">
+                                                                                <img src="{{asset('assets/img/folder-preview.svg')}}" alt="media file">
+                                                                            </a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($file['extension'] == 'png' || $file['extension'] == 'jpg' || $file['extension'] == 'webp')
-                                                                    @php $path = $file['url']; @endphp
-                                                                @elseif($file['extension'] == 'xlsx')
-                                                                    @php $path = 'assets/img/exel.svg'; @endphp
-                                                                @elseif($file['extension'] == 'pdf')
-                                                                    @php $path = "assets/img/pdf.svg"; @endphp
-                                                                @endif
-                                                                <div class="media-card__img">
-                                                                    <img src="{{asset($path)}}" alt="{{$file['basename']}}">
+                                                            @endforeach
+                                                        @endif
+                                                        @if(isset($favorites->all_files['files']))
+                                                            @foreach($favorites->all_files['files'] as $file)
+                                                                <div class="column sm-12 md-3">
+                                                                    <div class="media-card">
+                                                                        <div class="media-card__heading">
+                                                                            <div class="media-card__name type-{{$file['extension']}}">{{$file['basename']}}</div>
+                                                                            <div class="media-card__action">
+                                                                                <a href="{{route('medias.download-file'). '?path='. $file['path']}}" download="{{$file['basename']}}" class="media-card__download">
+                                                                                    <i class="icon icon-download"></i>
+                                                                                </a>
+                                                                                <div class="media-card__properties properties">
+                                                                                    <div class="properties__target">
+                                                                                        <i class="icon icon-properties"></i>
+                                                                                    </div>
+                                                                                    <div class="properties__dropdown">
+                                                                                        <div class="properties__item" data-file="{{$file['path']}}">
+                                                                                            <i class="icon icon-link"></i>
+                                                                                            <span>Link to file</span>
+                                                                                        </div>
+                                                                                        <div class="properties__item update-favorite-files {{\App\Models\Favorite::favFile($file['path']) ? 'active' : ''}}" data-favoriteFile="{{$file['path']}}">
+                                                                                            <i class="icon icon-heart"></i>
+                                                                                            <span>Add to favourites</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        @php $path = 'assets/img/default.png'; @endphp
+                                                                        @if($file['extension'] == 'png' || $file['extension'] == 'jpg' || $file['extension'] == 'webp')
+                                                                            @php $path = $file['url']; @endphp
+                                                                        @elseif($file['extension'] == 'xlsx')
+                                                                            @php $path = 'assets/img/exel.svg'; @endphp
+                                                                        @elseif($file['extension'] == 'pdf')
+                                                                            @php $path = "assets/img/pdf.svg"; @endphp
+                                                                        @elseif($file['extension'] == 'psd')
+                                                                            @php $path = "assets/img/psd.svg"; @endphp
+                                                                        @elseif($file['extension'] == 'mp4')
+                                                                            @php $path = "assets/img/mp4.svg"; @endphp
+                                                                        @elseif($file['extension'] == 'tif')
+                                                                            @php $path = "assets/img/tif.svg"; @endphp
+                                                                        @endif
+                                                                        <div class="media-card__img">
+                                                                            <img src="{{asset($path)}}" alt="{{$file['basename']}}">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
+                                                            @endforeach
+                                                        @endif
                                                     @endif
-                                                @endif
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endif
                     </div>
                 </div>
