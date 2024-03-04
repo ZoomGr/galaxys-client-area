@@ -19,6 +19,9 @@
                                     <div class="combo-option" data-option-value="pdf">
                                         <span>Pdf</span>
                                     </div>
+                                    <div class="combo-option" data-option-value="webp">
+                                        <span>Webp</span>
+                                    </div>
                                     <div class="combo-option" data-option-value="jpg">
                                         <span>Jpeg</span>
                                     </div>
@@ -27,6 +30,15 @@
                                     </div>
                                     <div class="combo-option" data-option-value="xlsx">
                                         <span>Xlsx</span>
+                                    </div>
+                                    <div class="combo-option" data-option-value="psd">
+                                        <span>PSD</span>
+                                    </div>
+                                    <div class="combo-option" data-option-value="tif">
+                                        <span>Tif</span>
+                                    </div>
+                                    <div class="combo-option" data-option-value="mp4">
+                                        <span>Mp4</span>
                                     </div>
                                 </div>
                             </div>
