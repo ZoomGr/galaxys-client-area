@@ -309,6 +309,21 @@
     margin-bottom: rem(32);
     padding: rem(8);
 
+    .update-favorites {
+      span:last-child {
+        display: none;
+      }
+
+      &.btn_main {
+        span:nth-last-child(2) {
+          display: none;
+        }
+        span:last-child {
+          display: block;
+        }
+      }
+    }
+
     &__tabs {
         @include flex(1, 1, auto);
         @extend %flex;

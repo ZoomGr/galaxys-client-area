@@ -43,9 +43,10 @@
                                 @endif
                             </div>
                             <div class="action-bar__btn">
-                                <a href="#" class="btn btn_sm color-main update-favorites {{$game->favorite ? 'active' : ''}}" data-favorite="{{$game->entity_id}}">
+                                <a href="#" class="btn btn_sm color-main update-favorites {{$game->favorite ? 'btn_main' : ''}}" data-favorite="{{$game->entity_id}}">
                                     <i class="icon icon-heart"></i>
                                     <span>Add to favourites</span>
+                                    <span>Favourite</span>
                                 </a>
                                 @if(!empty($game->entityData->ed_char_1))
                                     <a href="{{$game->entityData->ed_char_1}}" target="_blank" class="btn btn_gradient btn_sm color-main">

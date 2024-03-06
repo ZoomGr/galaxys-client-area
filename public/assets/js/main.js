@@ -44,7 +44,11 @@ $(document).ready(function () {
             data: { id: _this.attr("data-favorite") },
             success: function (data) {
                 if (data != undefined && data.status == true) {
-                    _this.toggleClass("active");
+                    if(_this.hasClass("btn")) {
+                        _this.toggleClass("btn_main");
+                    } else {
+                        _this.toggleClass("active");
+                    }
                 }
             },
             error: function (err) {
