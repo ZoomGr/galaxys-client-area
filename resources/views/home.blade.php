@@ -168,7 +168,7 @@
                                 <div class="game-card__img radius-xxs">
                                     <img src="{{ \App\Helpers\PanelEntity::getEntityImage($game->entityData->ed_image, 426, 536, 6) }}" alt="{{ $game->entityDataLang->edl_title }}">
 
-                                    <div class="game-card__action game-card__action_fav">
+                                    <div class="game-card__action game-card__action_fav update-favorites {{$game->favorite ? 'active' : ''}}" data-favorite="{{$game->entity_id}}">
                                         <i class="icon icon-heart"></i>
                                     </div>
                                     @if(!empty($game->entityData->ed_char_1))
