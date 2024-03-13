@@ -64,7 +64,8 @@ class GamesController extends Controller
             }
             return 0;
         });
-        $country_licenses = PanelEntity::getMultiple(['entity_parent' => $game->entity_id, 'entity_type' => 'game_country_licenses'], ['entityData', 'entityDataLang']);
+        $country_licenses = PanelEntity::getMultiple(['entity_parent' => $game->entity_id, 'entity_type' => 'game_country_licenses'], ['entityData', 'entityDataLang'], ['entity_order' => 'DESC']);
+        $game_licenses = PanelEntity::getMultiple(['entity_parent' => $game->entity_id, 'entity_type' => 'game_licenses'], ['entityData', 'entityDataLang'], ['entity_order' => 'DESC']);
 
 //        foreach ($country_licenses as &$country_license) {
 //            var_dump($country_license->entityData->ed_number_1);
@@ -81,7 +82,7 @@ class GamesController extends Controller
         $game->all_files = $this->media_service->getDirectoryDataWithSize($s3_folder_name);
         $add_favorite = true;
 
-        return view('games.show')->with(compact('game', 's3_folder_name', 'add_favorite', 'country_licenses'));
+        return view('games.show')->with(compact('game', 's3_folder_name', 'add_favorite', 'country_licenses', 'game_licenses'));
     }
 
     public function roadmap() {

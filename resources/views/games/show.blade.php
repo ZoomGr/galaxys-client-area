@@ -149,10 +149,11 @@
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(!empty($game->entityData->ed_char_2) || !empty($game->entityData->ed_char_3))
-                                                    @if(!empty($game->entityData->ed_char_2))
+                                                @foreach($game_licenses as $game_license)
+                                                    @php $pathInfo = null; @endphp
+                                                    @if(!empty($game_license->entityData->ed_char_1))
                                                         @php $path = 'assets/img/default.png'; @endphp
-                                                        @php $pathInfo = pathinfo($game->entityData->ed_char_2); @endphp
+                                                        @php $pathInfo = pathinfo($game_license->entityData->ed_char_1); @endphp
                                                         @if($pathInfo['extension'] == 'png' || $pathInfo['extension'] == 'jpg' || $pathInfo['extension'] == 'webp')
                                                             @php $path = 'assets/img/png.png'; @endphp
                                                         @elseif($pathInfo['extension'] == 'xlsx')
@@ -176,10 +177,10 @@
                                                                     </div>
                                                                 @endif
                                                                 <div class="file-info__body">
-                                                                    <div class="file-info__name font-semibold">{{$game->entityData->ed_char_3 ?? $pathInfo['basename'] }}</div>
+                                                                    <div class="file-info__name font-semibold">{{$game_license->entityDataLang->edl_title ?? $pathInfo['basename'] }}</div>
                                                                     @if(isset($pathInfo))
                                                                         <div class="file-info__size text-14 font-medium color-black-30">
-                                                                            {{\App\Helpers\Helper::formatSizeUnits(File::size(public_path(\App\Helpers\PanelEntity::image($game->entityData->ed_char_2))))}}
+                                                                            {{\App\Helpers\Helper::formatSizeUnits(File::size(public_path(\App\Helpers\PanelEntity::image($game_license->entityData->ed_char_1))))}}
                                                                         </div>
                                                                     @endif
                                                                 </div>
@@ -187,104 +188,13 @@
                                                         </div>
                                                         @if(isset($pathInfo))
                                                             <div class="info-list__value">
-                                                                <a href="{{asset(\App\Helpers\PanelEntity::image($game->entityData->ed_char_2))}}" download="{{$game->entityData->ed_char_3 ?? $pathInfo['basename']}}" class="btn btn_md btn_badge btn_main-light">
+                                                                <a href="{{asset(\App\Helpers\PanelEntity::image($game_license->entityData->ed_char_1))}}" download="{{$game_license->entityDataLang->edl_title ?? $pathInfo['basename']}}" class="btn btn_md btn_badge btn_main-light">
                                                                     <i class="icon icon-download"></i>
                                                                 </a>
                                                             </div>
                                                         @endif
                                                     </div>
-                                                @endif
-                                                @if(!empty($game->entityData->ed_char_4) || !empty($game->entityData->ed_char_5))
-                                                    @if(!empty($game->entityData->ed_char_4))
-                                                        @php $path = 'assets/img/default.png'; @endphp
-                                                        @php $pathInfo = pathinfo($game->entityData->ed_char_4); @endphp
-                                                        @if($pathInfo['extension'] == 'png' || $pathInfo['extension'] == 'jpg' || $pathInfo['extension'] == 'webp')
-                                                            @php $path = 'assets/img/png.png'; @endphp
-                                                        @elseif($pathInfo['extension'] == 'xlsx')
-                                                            @php $path = 'assets/img/exel.svg'; @endphp
-                                                        @elseif($pathInfo['extension'] == 'pdf')
-                                                            @php $path = "assets/img/pdf.svg"; @endphp
-                                                        @elseif($file['extension'] == 'psd')
-                                                            @php $path = "assets/img/psd.svg"; @endphp
-                                                        @elseif($file['extension'] == 'mp4')
-                                                            @php $path = "assets/img/mp4.svg"; @endphp
-                                                        @elseif($file['extension'] == 'tif')
-                                                            @php $path = "assets/img/tif.svg"; @endphp
-                                                        @endif
-                                                    @endif
-
-                                                    <div class="info-list__item">
-                                                        <div class="info-list__label">
-                                                            <div class="file-info">
-                                                                @if(isset($pathInfo))
-                                                                    <div class="file-info__icon">
-                                                                        <img src="{{asset($path)}}" alt="{{$game->entityData->ed_char_5 ?? $pathInfo['basename']}}">
-                                                                    </div>
-                                                                @endif
-                                                                <div class="file-info__body">
-                                                                    <div class="file-info__name font-semibold">{{$game->entityData->ed_char_5 ?? $pathInfo['basename'] }}</div>
-                                                                    @if(isset($pathInfo))
-                                                                        <div class="file-info__size text-14 font-medium color-black-30">
-                                                                            {{\App\Helpers\Helper::formatSizeUnits(File::size(public_path(\App\Helpers\PanelEntity::image($game->entityData->ed_char_4))))}}
-                                                                        </div>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        @if(isset($pathInfo))
-                                                            <div class="info-list__value">
-                                                                <a href="{{asset(\App\Helpers\PanelEntity::image($game->entityData->ed_char_4))}}" download="{{$game->entityData->ed_char_5 ?? $pathInfo['basename']}}" class="btn btn_md btn_badge btn_main-light">
-                                                                    <i class="icon icon-download"></i>
-                                                                </a>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                @endif
-                                                @if(!empty($game->entityData->ed_text_1) || !empty($game->entityData->ed_text_2))
-                                                    @if(!empty($game->entityData->ed_text_1))
-                                                        @php $path = 'assets/img/default.png'; @endphp
-                                                        @php $pathInfo = pathinfo($game->entityData->ed_text_1); @endphp
-                                                        @if($pathInfo['extension'] == 'png' || $pathInfo['extension'] == 'jpg' || $pathInfo['extension'] == 'webp')
-                                                            @php $path = 'assets/img/png.png'; @endphp
-                                                        @elseif($pathInfo['extension'] == 'xlsx')
-                                                            @php $path = 'assets/img/exel.svg'; @endphp
-                                                        @elseif($pathInfo['extension'] == 'pdf')
-                                                            @php $path = "assets/img/pdf.svg"; @endphp
-                                                        @elseif($file['extension'] == 'psd')
-                                                            @php $path = "assets/img/psd.svg"; @endphp
-                                                        @elseif($file['extension'] == 'mp4')
-                                                            @php $path = "assets/img/mp4.svg"; @endphp
-                                                        @elseif($file['extension'] == 'tif')
-                                                            @php $path = "assets/img/tif.svg"; @endphp
-                                                        @endif
-                                                    @endif
-                                                    <div class="info-list__item">
-                                                        <div class="info-list__label">
-                                                            <div class="file-info">
-                                                                @if(isset($pathInfo))
-                                                                    <div class="file-info__icon">
-                                                                        <img src="{{asset($path)}}" alt="{{ $game->entityData->ed_text_2 ?? $pathInfo['basename']}}">
-                                                                    </div>
-                                                                @endif
-                                                                <div class="file-info__body">
-                                                                    <div class="file-info__name font-semibold">{{$game->entityData->ed_text_2 ?? $pathInfo['basename']}}</div>
-                                                                    @if(isset($pathInfo))
-                                                                        <div class="file-info__size text-14 font-medium color-black-30">
-                                                                            {{\App\Helpers\Helper::formatSizeUnits(File::size(public_path(\App\Helpers\PanelEntity::image($game->entityData->ed_char_4))))}}
-                                                                        </div>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        @if(isset($pathInfo))
-                                                            <div class="info-list__value">
-                                                                <a href="{{asset(\App\Helpers\PanelEntity::image($game->entityData->ed_text_1))}}" download="{{$game->entityData->ed_text_2 ?? $pathInfo['basename']}}" class="btn btn_md btn_badge btn_main-light">
-                                                                    <i class="icon icon-download"></i>
-                                                                </a>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                @endif
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>

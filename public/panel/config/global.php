@@ -1,22 +1,22 @@
 <?php
-	$seoFields = array(
-		array("title"=>"Url", "type"=>"text", "name"=>"es_url", "isRichText"=>false),
-		array("title"=>"Title", "type"=>"text", "name"=>"es_title", "isRichText"=>false),
-		array("title"=>"Keywords", "type"=>"textarea", "name"=>"es_keywords", "isRichText"=>false),
-		array("title"=>"Description", "type"=>"textarea", "name"=>"es_description", "isRichText"=>false),
-	);
+    $seoFields = array(
+        array("title"=>"Url", "type"=>"text", "name"=>"es_url", "isRichText"=>false),
+        array("title"=>"Title", "type"=>"text", "name"=>"es_title", "isRichText"=>false),
+        array("title"=>"Keywords", "type"=>"textarea", "name"=>"es_keywords", "isRichText"=>false),
+        array("title"=>"Description", "type"=>"textarea", "name"=>"es_description", "isRichText"=>false),
+    );
 
-	$custormSortFields = array(
+    $custormSortFields = array(
 
-	);
+    );
 
-	$disableAddButtonIn = array();
+    $disableAddButtonIn = array();
 
-	$wordsMap = array(
+    $wordsMap = array(
 
-	);
+    );
 
-	$templateMap = array(
+    $templateMap = array(
         0 => ['section', 'section_promo'],
         ID_NEWS => ['news'],
         ID_TAXONOMIES => ['section', 'compliance_section'],
@@ -28,26 +28,25 @@
         ID_GAMES => ['games'],
         ID_COMPILIANCE_LICENSES => ['compliance_license'],
         ID_SLIDER => ['slider'],
-	);
+    );
 
-	$templateChildren = array(
+    $templateChildren = array(
         'chat_user' => ['chat'],
         'chat' => ['chat_message'],
-        'games' => ['game_country_licenses'],
-	);
+        'games' => ['game_country_licenses', 'game_licenses'],
+    );
 
-	$widgetWhiteList = [];
+    $widgetWhiteList = [];
 
-	$additionalColumnsInSections = array(
-	);
+    $additionalColumnsInSections = array(
+    );
 
-	$additionalColumnsInWidgets = array();
+    $additionalColumnsInWidgets = array();
 
-	define("TITLE_FIELD", "edl_title");
+    define("TITLE_FIELD", "edl_title");
 
-	define("IMG_FIELD", "ed_image");
+    define("IMG_FIELD", "ed_image");
 
-	define("PAGE_SIZE", 50);
+    define("PAGE_SIZE", 50);
 
-	define("DISABLE_THUMBNAIL", true);
-?>
+    define("DISABLE_THUMBNAIL", true);
