@@ -195,7 +195,7 @@
             <span class="text-14 font-medium color-black-10">
                 Support information
             </span>
-            <span class="font-semibold color-white">info@imaginelive.com</span>
+            <span class="font-semibold color-white">galaxsysmarketing@galaxsys.co</span>
         </div>
     </div>
 </div>
