@@ -241,6 +241,10 @@
         }
     }
 
+    &__body {
+        @include flex(1, 1, auto);
+    }
+
     &__arrow {
         @include flex(0, 0, auto);
         margin-left: rem(22);
