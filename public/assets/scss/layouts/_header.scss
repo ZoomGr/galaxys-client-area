@@ -432,7 +432,14 @@
         width: 100%;
         padding: rem(32) rem(32) rem(16);
 
+        a {
+            display: inline-block;
+            margin-bottom: rem(24);
+        }
+
         span {
+            display: block;
+
             &:first-child {
                 line-height: 171%;
             }
