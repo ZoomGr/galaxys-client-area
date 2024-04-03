@@ -64,8 +64,9 @@
         ["title"=>"Image", "type"=>"image", "name"=>"ed_image"],
         ["title"=>"Description", "type"=>"text", "name"=>"edl_char_1"],
         ["title"=>"Content", "type"=>"textarea", "name"=>"edl_text_1", "isRichText"=> true],
-        ["title"=>"Opening hours", "type"=>"text", "name"=>"edl_char_2"],
-        ["title"=>"Technology", "type"=>"text", "name"=>"edl_char_3"],
+        ["title"=>"Game type", "type"=>"text", "name"=>"edl_char_2"],
+        ["title"=>"Game RTP", "type"=>"text", "name"=>"edl_char_3"],
+        ["title"=>"Game ID", "type"=>"text", "name"=>"edl_char_4"],
         ["title"=>"Available Devices", "type"=>"multiselect", "name"=>"eo_available_devices", "pid"=>function() {
             return [
                 1 => 'Desktop',

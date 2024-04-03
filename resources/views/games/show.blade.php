@@ -76,14 +76,24 @@
                                                 <span>Information</span>
                                             </div>
                                             <div class="info-list__items">
-                                                <div class="info-list__item">
-                                                    <div class="info-list__label">Operating hours</div>
-                                                    <div class="info-list__value">{{ $game->entityDataLang->edl_char_2 }}</div>
-                                                </div>
-                                                {{--                                                <div class="info-list__item">--}}
-                                                {{--                                                    <div class="info-list__label">Technology</div>--}}
-                                                {{--                                                    <div class="info-list__value">{{ $game->entityDataLang->edl_char_3 }}</div>--}}
-                                                {{--                                                </div>--}}
+												@if($game->entityDataLang->edl_char_2)
+													<div class="info-list__item">
+														<div class="info-list__label">Game type</div>
+														<div class="info-list__value">{{ $game->entityDataLang->edl_char_2 }}</div>
+													</div>
+                                                @endif
+                                                @if($game->entityDataLang->edl_char_3)
+													<div class="info-list__item">
+														<div class="info-list__label">Game RTP</div>
+														<div class="info-list__value">{{ $game->entityDataLang->edl_char_3 }}</div>
+													</div>
+                                                @endif
+                                                @if($game->entityDataLang->edl_char_4)
+													<div class="info-list__item">
+														<div class="info-list__label">Game ID</div>
+														<div class="info-list__value">{{ $game->entityDataLang->edl_char_4 }}</div>
+													</div>
+                                                @endif
                                                 <div class="info-list__item">
                                                     <div class="info-list__label">Available on</div>
                                                     <div class="info-list__value">
