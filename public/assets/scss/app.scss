@@ -53,7 +53,7 @@
 }
 
 .date {
-    @extend %flex;
+    @extend %inline-flex;
     @extend %align-middle;
     padding: rem(4) 0;
 
@@ -83,6 +83,12 @@
         span {
             font-size: rem(20);
         }
+    }
+
+    &_grey {
+        background-color: map-get($color-scheme, 'black-5');
+        padding: rem(4) rem(8) rem(4) rem(4);
+        border-radius: rem(30);
     }
 }
 

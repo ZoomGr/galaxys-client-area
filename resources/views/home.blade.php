@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="column sm-12 md-12">
+        <div class="column sm-12">
             <div class="content__body">
                 <div class="latest-news shadow-xs radius-md list-block">
                     <div class="list-block__heading align-between">
@@ -70,12 +70,12 @@
                         @if($main_news)
                         <div class="latest-news__main">
                             <a href="{{route('news.show', ['news' => $main_news['entity_id']])}}" class="news-card news-card_single radius-xs">
-                                <div class="news-card__img">
+                                <div class="news-card__img radius-xs">
                                     <img src="{{ \App\Helpers\PanelEntity::getEntityImage($main_news['entity_data']['ed_image'], 400, 496, 6) }}" alt="{{ $main_news['entity_data_lang']['edl_title'] }}">
                                 </div>
-                                <div class="news-card__body color-white">
+                                <div class="news-card__body">
                                     <div class="news-card__date">
-                                        <div class="date">
+                                        <div class="date date_grey">
                                             <i class="icon icon-clock"></i>
                                             <span>{{\Carbon\Carbon::parse($main_news['entity_data']['ed_datetime_1'])->format('d.m.Y')}}</span>
                                         </div>
