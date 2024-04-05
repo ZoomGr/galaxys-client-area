@@ -71,7 +71,7 @@
                         <div class="latest-news__main">
                             <a href="{{route('news.show', ['news' => $main_news['entity_id']])}}" class="news-card news-card_single radius-xs">
                                 <div class="news-card__img radius-xs">
-                                    <img src="{{ \App\Helpers\PanelEntity::getEntityImage($main_news['entity_data']['ed_image'], 400, 496, 6) }}" alt="{{ $main_news['entity_data_lang']['edl_title'] }}">
+                                    <img src="{{ \App\Helpers\PanelEntity::getEntityImage($main_news['entity_data']['ed_image'], 751, 383, 6) }}" alt="{{ $main_news['entity_data_lang']['edl_title'] }}">
                                 </div>
                                 <div class="news-card__body">
                                     <div class="news-card__date">
@@ -103,7 +103,7 @@
                                         </div>
                                     </div>
                                     <div class="news-card__img">
-                                        <img src="{{ \App\Helpers\PanelEntity::getEntityImage($news['entity_data']['ed_image'], 112, 112, 6) }}" alt="{{ $news['entity_data_lang']['edl_title'] }}">
+                                        <img src="{{ \App\Helpers\PanelEntity::getEntityImage($news['entity_data']['ed_image'], 751, 383, 6) }}" alt="{{ $news['entity_data_lang']['edl_title'] }}">
                                     </div>
                                 </a>
                             </div>
