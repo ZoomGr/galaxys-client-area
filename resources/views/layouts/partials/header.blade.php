@@ -189,9 +189,9 @@
             </div>
         </div>
         <div class="sidebar__info">
-            <a href="{{asset('assets/img/Imagine-Live-Integration-Tecnical-Documentation.pdf')}}" download class="text-14 font-medium color-black-10">
-                Integration Documentation
-            </a>
+{{--            <a href="{{asset('assets/img/Imagine-Live-Integration-Tecnical-Documentation.pdf')}}" download class="text-14 font-medium color-black-10">--}}
+{{--                Integration Documentation--}}
+{{--            </a>--}}
             <span class="text-14 font-medium color-black-10">
                 Support information
             </span>
