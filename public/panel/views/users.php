@@ -306,7 +306,7 @@ else
                     </div>
                 </form>
                 <?php
-                $results = $db->data("SELECT COUNT(*) AS mCnt FROM users WHERE user_type IS NOT NULL ", array());
+                $results = $db->data("SELECT COUNT(*) AS mCnt FROM users ", array());
                 if( count($results) > 0 )
                 {
                     $page = 1;
