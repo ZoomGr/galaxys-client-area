@@ -46,7 +46,7 @@
 
 	function isEditableUserType($userType)
 	{
-        if(empty($userType) && USER_TYPE ==="ROOT") {
+        if(empty($userType) && (USER_TYPE ==="ROOT" || USER_TYPE==="ADMIN")) {
             return true;
         }
 
