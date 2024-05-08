@@ -166,7 +166,7 @@
                         <div class="column sm-12">
                             <a href="{{ route('games.show', ['game' => $game->entity_id]) }}" class="game-card">
                                 <div class="game-card__img radius-xxs">
-                                    <img src="{{ \App\Helpers\PanelEntity::getEntityImage($game->entityData->ed_image, 426, 536, 6) }}" alt="{{ $game->entityDataLang->edl_title }}">
+                                    <img src="{{ \App\Helpers\PanelEntity::image($game->entityData->ed_image) }}" alt="{{ $game->entityDataLang->edl_title }}">
 
                                     <div class="game-card__action game-card__action_fav update-favorites {{$game->favorite ? 'active' : ''}}" data-favorite="{{$game->entity_id}}">
                                         <i class="icon icon-heart"></i>
