@@ -8,7 +8,7 @@
 
 @section('styles')
     <!-- Page Css -->
-    <link rel="stylesheet" href="{{asset('assets/css/pages/login.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/login.css?') . filemtime('assets/css/pages/login.css')}}">
     <!-- ========================== -->
 @endsection
 
