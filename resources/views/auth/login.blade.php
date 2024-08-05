@@ -15,7 +15,7 @@
 @section('content')
     <div class="content">
         <div class="row align-center">
-            <div class="column sm-10 md-5">
+            <div class="column sm-12 md-10 lg-5">
                 <div class="content__body">
                     <div class="sign-up-container">
                         <div class="sign-up-logo main-logo">

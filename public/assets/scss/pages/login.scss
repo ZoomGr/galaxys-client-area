@@ -61,3 +61,39 @@
         margin-top: rem(32);
     }
 }
+
+@media (max-width: $media-md) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: $media-sm) {
+    .main-page {
+        .content {
+            padding-top: rem(84);
+        }
+    }
+    
+    .sign-up {
+        padding: rem(16);
+    
+        &__icon {
+            width: rem(48);
+            height: rem(48);
+    
+            .icon {
+                font-size: rem(20);
+            }
+        }
+    
+        &__title {
+            font-size: rem(24);
+        }
+    
+        &__desc {
+            font-size: rem(13);
+            margin-bottom: rem(24);
+        }
+    }   
+}
