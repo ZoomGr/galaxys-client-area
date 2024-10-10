@@ -40,7 +40,7 @@
                                 <div class="{{$gridElementClasses}}">
                                     <a href="{{route('news.show', ['news' => $news->entity_id])}}" class="article-card shadow-xs radius-xs">
                                         <div class="article-card__img radius-xxs">
-                                            <img src="{{ \App\Helpers\PanelEntity::getEntityImage($news->entityData->ed_image, 498, 284, 6) }}" alt="{{$news->entityDataLang->edl_title}}">
+                                            <img src="{{ \App\Helpers\PanelEntity::getEntityImage($news->entityData->ed_image, 751, 383, 6) }}" alt="{{$news->entityDataLang->edl_title}}">
                                         </div>
                                         <div class="article-card__body">
                                             <div class="article-card__date color-black-50">
