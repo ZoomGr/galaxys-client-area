@@ -60,7 +60,14 @@
 
     $gameSectionFields = [
         ["title"=>"Title", "type"=>"text", "name"=>"edl_title"],
-        ["title"=>"Parent Game", "type"=>"text", "name"=>"edl_text_2"],
+//        ["title"=>"Parent Game", "type"=>"text", "name"=>"edl_text_2"],
+        ["title"=>"Parent Game", "type"=>"select", "name"=>"ed_char_5", "pid"=>function() {
+            return [
+                'Fast games' => 'Fast games',
+                'Skill games' => 'Skill games',
+                'Baccarat' => 'Test',
+            ];
+        }],
         ["title"=>"Image", "type"=>"image", "name"=>"ed_image"],
         ["title"=>"Description", "type"=>"text", "name"=>"edl_char_1"],
         ["title"=>"Content", "type"=>"textarea", "name"=>"edl_text_1", "isRichText"=> true],

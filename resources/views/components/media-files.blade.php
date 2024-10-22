@@ -73,14 +73,17 @@
                     <tr class="media-table__file" >
                         <td>
                             <div class="media-table__name">
-                                @php $path = 'assets/img/default.png'; @endphp
-                                @if($file['extension'] == 'png' || $file['extension'] == 'jpg' || $file['extension'] == 'webp')
+                                @php $path = 'assets/img/default.svg'; @endphp
+                                @if($file['extension'] == 'png' || $file['extension'] == 'jpg' || $file['extension'] == 'webp'
+                                    || $file['extension'] == 'svg')
                                     @php $path = 'assets/img/png.png'; @endphp
                                 @elseif($file['extension'] == 'xlsx')
                                     @php $path = 'assets/img/exel.svg'; @endphp
+                                @elseif($file['extension'] == 'gif')
+                                    @php $path = 'assets/img/gif.svg'; @endphp
                                 @elseif($file['extension'] == 'pdf')
                                     @php $path = "assets/img/pdf.svg"; @endphp
-                                @elseif($file['extension'] == 'psd')
+                                @elseif($file['extension'] == 'psd' || $file['extension'] == 'psb')
                                     @php $path = "assets/img/psd.svg"; @endphp
                                 @elseif($file['extension'] == 'mp4')
                                     @php $path = "assets/img/mp4.svg"; @endphp
@@ -202,14 +205,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                @php $path = 'assets/img/default.png'; @endphp
-                                @if($file['extension'] == 'png' || $file['extension'] == 'jpg' || $file['extension'] == 'webp')
+                                @php $path = 'assets/img/default.svg'; @endphp
+                                @if($file['extension'] == 'png' || $file['extension'] == 'jpg' || $file['extension'] == 'webp' || $file['extension'] == 'svg'
+                                    || $file['extension'] == 'gif')
                                     @php $path = $file['url']; @endphp
                                 @elseif($file['extension'] == 'xlsx')
                                     @php $path = 'assets/img/exel.svg'; @endphp
                                 @elseif($file['extension'] == 'pdf')
                                     @php $path = "assets/img/pdf.svg"; @endphp
-                                @elseif($file['extension'] == 'psd')
+                                @elseif($file['extension'] == 'psd' || $file['extension'] == 'psb')
                                     @php $path = "assets/img/psd.svg"; @endphp
                                 @elseif($file['extension'] == 'mp4')
                                     @php $path = "assets/img/mp4.svg"; @endphp
