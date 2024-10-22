@@ -98,7 +98,9 @@
                             @endforeach
                         </div>
                     </div>
-                    {{ $games->links('vendor.pagination.default') }}
+                    <div class="article-listing-paging text-center">
+                        {{ $games->links('vendor.pagination.default') }}
+                    </div>
                 </div>
             </div>
         </div>
