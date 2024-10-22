@@ -11,3 +11,10 @@ define("ID_NOTIFICATIONS", 11);
 define("ID_CHATS", 17);
 define("ID_ROADMAP", 14);
 
+
+if($_SERVER["REMOTE_ADDR"]=="127.0.0.1"){
+    define("ID_GAME_PARENTS", 92);
+}else{
+    define("ID_GAME_PARENTS", 158);
+}
+

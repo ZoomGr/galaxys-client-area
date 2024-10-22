@@ -24,27 +24,29 @@
                     </div>
                     <div class="game-library shadow-xs radius-md">
                         <div class="game-library__heading">
-                            <form action="{{ route('games.index') }}" method="GET" class="games-sort-form">
+                            <form action="{{ route('games.index') }}" method="GET" class="games-filter-form">
                                 <div class="filters">
                                     <div class="filters__action">
                                         <div class="filters__title text-20 font-medium">Filters</div>
                                         <div class="filters__list">
                                             <div class="filters__item">
                                                 <div class="custom-select custom-select_md custom-select_border">
-                                                    <div class="combo-box" data-combo-name="sort">
+                                                    <div class="combo-box" data-combo-name="filter">
                                                         <div class="combo-box-selected">
                                                             <div class="combo-box-selected-wrap">
-                                                                <span class="combo-box-placeholder">Sort</span>
+                                                                <span class="combo-box-placeholder">Filter</span>
                                                             </div>
                                                         </div>
                                                         <div class="combo-box-dropdown">
                                                             <div class="combo-box-options">
-                                                                <div class="combo-option" name="asc" {{ Request::input('asc') ? "selected" : "" }} data-option-value="ascending">
-                                                                    <span>ascending</span>
+                                                                <div class="combo-option" name="all" data-option-value="all">
+                                                                    <span>All</span>
                                                                 </div>
-                                                                <div class="combo-option" name="desc" {{ Request::input('desc') ? "selected" : "" }} data-option-value="descending">
-                                                                    <span>descending</span>
-                                                                </div>
+                                                                @foreach($filters as $filter)
+                                                                    <div class="combo-option" name="{{$filter->entityDataLang->edl_title}}" data-option-value="{{$filter->entity_id}}">
+                                                                        <span>{{$filter->entityDataLang->edl_title}}</span>
+                                                                    </div>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>
@@ -73,7 +75,7 @@
                         </div>
                         <div class="game-library__body row md-cols-4">
                             @foreach($games as $game)
-                                <div class="column sm-12">
+                                <div class="column sm-12" data-parent-id="{{$game->entityData->ed_number_1 ?? ''}}">
                                     <a href="{{ route('games.show', ['game' => $game->entity_id]) }}" class="game-card">
                                         <div class="game-card__img radius-xs">
                                             <img src="{{ \App\Helpers\PanelEntity::getEntityImage($game->entityData->ed_image, 340, 229, 6) }}" alt="{{ $game->entityDataLang->edl_title }}">

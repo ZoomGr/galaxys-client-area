@@ -24,8 +24,10 @@ class GamesController extends Controller
     {
         $entity = PanelEntity::getOne(['entity_id' => ID_GAMES], ['entityData', 'entityDataLang', 'entitySeo']);
         $games = PanelEntity::getPaginate(['entity_parent' => ID_GAMES], 8, false, ['entity_order' => 'DESC'] );
+        $filters = PanelEntity::getMultiple(['entity_parent' => ID_GAME_PARENTS], ['entityData', 'entityDataLang'],
+            ['entity_order' => 'DESC'] );
 
-        return view('games.index')->with(compact('games', 'entity'));
+        return view('games.index')->with(compact('games', 'entity', 'filters'));
     }
 
     /**
