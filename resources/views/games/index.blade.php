@@ -31,7 +31,7 @@
                                         <div class="filters__list">
                                             <div class="filters__item">
                                                 <div class="custom-select custom-select_md custom-select_border">
-                                                    <div class="combo-box" data-combo-name="filter">
+                                                    <div class="combo-box" data-combo-name="games-filter">
                                                         <div class="combo-box-selected">
                                                             <div class="combo-box-selected-wrap">
                                                                 <span class="combo-box-placeholder">Filter</span>
