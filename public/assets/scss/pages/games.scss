@@ -15,6 +15,10 @@
             margin-bottom: rem(32);
         }
     }
+
+    &+.article-listing-paging {
+        margin-top: rem(32);
+    }
 }
 
 .upcoming-games {
