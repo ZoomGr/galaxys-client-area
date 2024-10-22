@@ -675,6 +675,12 @@ function get_path_data(path) {
     let media_type = '&media=' + $('.btn_badge.tab.active').attr('data-tab');
     $.get("/medias/get-path-data?path=" + path + media_type, function(data){
         $(".all-medias-content").html(data);
+        if(!$(".media-table__file").length) {
+            $(".media-files__download").addClass("hidden");
+        } else {
+            $(".media-files__download").removeClass("hidden");
+        }
+        
         let breadcrumb = [];
 
         if (path != 'all') {
