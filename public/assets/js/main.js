@@ -30,17 +30,7 @@ $(document).ready(function () {
     });
 
     $("select[name='games-filter']").on("change", function() {
-        const val = $(this).val();
-
-        $("[data-parent-id]").removeClass("dn");
-
-        if(val !== 'all') {
-            $("[data-parent-id]").each(function() {
-                if(+val !== +$(this).attr("data-parent-id")) {
-                    $(this).addClass("dn");
-                }
-            });
-        }
+        $(this).closest("form").submit();
     });
 
     $(".update-favorites").on("click", function (event) {
