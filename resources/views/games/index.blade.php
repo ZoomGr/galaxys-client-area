@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="article-listing-paging text-center">
-                        {{ $games->links('vendor.pagination.default') }}
+                        {{ $games->appends($_GET)->links('vendor.pagination.default') }}
                     </div>
                 </div>
             </div>
