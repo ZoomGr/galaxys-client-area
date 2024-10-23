@@ -29,7 +29,7 @@ $(document).ready(function () {
         }
     });
 
-    $("select[name='games-filter']").on("change", function() {
+    $("select[name='games_filter']").on("change", function() {
         $(this).closest("form").submit();
     });
 
@@ -684,7 +684,7 @@ function get_path_data(path) {
         } else {
             $(".media-files__download").removeClass("hidden");
         }
-        
+
         let breadcrumb = [];
 
         if (path != 'all') {

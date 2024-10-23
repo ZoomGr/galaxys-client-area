@@ -20,10 +20,16 @@ class GamesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $conditions =  ['entity_parent' => ID_GAMES];
+
+        if (isset($request->games_filter) && $request->games_filter != 'all') {
+            $conditions['entityData'] = ['ed_number_1' => $request->games_filter];
+        }
+
         $entity = PanelEntity::getOne(['entity_id' => ID_GAMES], ['entityData', 'entityDataLang', 'entitySeo']);
-        $games = PanelEntity::getPaginate(['entity_parent' => ID_GAMES], 8, false, ['entity_order' => 'DESC'] );
+        $games = PanelEntity::getPaginate($conditions, 8, false, ['entity_order' => 'DESC'] );
         $filters = PanelEntity::getMultiple(['entity_parent' => ID_GAME_PARENTS], ['entityData', 'entityDataLang'],
             ['entity_order' => 'DESC'] );
 

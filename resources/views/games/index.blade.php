@@ -31,7 +31,7 @@
                                         <div class="filters__list">
                                             <div class="filters__item">
                                                 <div class="custom-select custom-select_md custom-select_border">
-                                                    <div class="combo-box" data-combo-name="games-filter">
+                                                    <div class="combo-box" data-combo-name="games_filter" data-combo-value="{{Request::input('games_filter')}}">
                                                         <div class="combo-box-selected">
                                                             <div class="combo-box-selected-wrap">
                                                                 <span class="combo-box-placeholder">Filter</span>
@@ -39,11 +39,12 @@
                                                         </div>
                                                         <div class="combo-box-dropdown">
                                                             <div class="combo-box-options">
-                                                                <div class="combo-option" name="all" data-option-value="all">
+                                                                <div class="combo-option {{ Request::input('games_filter') == 'all' ? "selected" : "" }}"  data-option-value="all">
                                                                     <span>All</span>
                                                                 </div>
                                                                 @foreach($filters as $filter)
-                                                                    <div class="combo-option" name="{{$filter->entityDataLang->edl_title}}" data-option-value="{{$filter->entity_id}}">
+                                                                    <div class="combo-option {{ Request::input('games_filter') ==  $filter->entity_id ? "selected" : "" }}"
+                                                                    data-option-value="{{$filter->entity_id}}">
                                                                         <span>{{$filter->entityDataLang->edl_title}}</span>
                                                                     </div>
                                                                 @endforeach
