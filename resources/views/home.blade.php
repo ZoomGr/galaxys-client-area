@@ -83,6 +83,9 @@
                                     <div class="news-card__title text-36 font-bold">
                                         {{ $main_news['entity_data_lang']['edl_title'] }}
                                     </div>
+                                    <div class="news-card__desc color-black-50">
+                                        {{$main_news['entity_data_lang']['edl_char_1']}}
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -100,6 +103,9 @@
                                         </div>
                                         <div class="news-card__title text-20 font-bold">
                                             {{ $news['entity_data_lang']['edl_title'] }}
+                                        </div>
+                                        <div class="news-card__desc color-black-50">
+                                            {{ $news['entity_data_lang']['edl_char_1'] }}
                                         </div>
                                     </div>
                                     <div class="news-card__img">
