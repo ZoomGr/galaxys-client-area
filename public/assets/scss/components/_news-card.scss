@@ -2,6 +2,10 @@
     position: relative;
     @extend %flex;
 
+    &__desc {
+        @include max-lines(3);
+    }
+
     &_single {
         @include flex-flow(column, nowrap);
         
