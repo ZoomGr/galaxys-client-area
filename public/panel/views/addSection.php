@@ -58,6 +58,11 @@
 								{
 									$template["onAdd"]($entityId);
 								}
+
+                                if(in_array($template, ['news']) && isset($template["afterUpdateNews"]) && is_callable($template["afterUpdateNews"]) )
+                                {
+                                    $template["afterUpdateNews"]($_POST, $entityId);
+                                }
 							}
 						}
 

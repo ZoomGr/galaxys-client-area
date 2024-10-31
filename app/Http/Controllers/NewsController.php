@@ -15,7 +15,7 @@ class NewsController extends Controller
     public function index()
     {
         $entity = PanelEntity::getOne(['entity_id' => ID_NEWS], ['entityData', 'entityDataLang', 'entityWords', 'entitySeo']);
-        $allNews = PanelEntity::getPaginate(['entity_parent' => ID_NEWS], 6, false, ['entity_order' => 'DESC'] );
+        $allNews = PanelEntity::getPaginate(['entity_parent' => ID_NEWS], 6, false, ['ed_datetime_1' => 'DESC'] );
 
         return view('news.index')->with(compact('allNews', 'entity'));
     }

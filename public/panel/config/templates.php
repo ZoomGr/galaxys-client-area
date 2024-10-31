@@ -151,7 +151,17 @@
         //-------------------------------Section templates here--------------------------------//
         array("id"=>"section", "title"=>"Section", "fields"=>$simpleSectionFields, "hasGallery"=>false, "hasSeo"=>false, "isWidget"=>false),
         array("id"=>"section_promo", "title"=>"Section Promo", "fields"=>$sectionWithPromoBlockFields, "hasGallery"=>false, "hasSeo"=>false, "isWidget"=>false),
-        array("id"=>"news", "title"=>"News", "fields"=>$newsSectionFields, "hasGallery"=>false, "hasSeo"=>true, "isWidget"=>false),
+        array("id"=>"news", "title"=>"News", "fields"=>$newsSectionFields, "hasGallery"=>false, "hasSeo"=>true, "isWidget"=>false, "afterUpdateNews"=>function($data, $id) {
+			global $db;
+
+			if (empty($data['ed_datetime_1'])) {
+                $datetime = new DateTime('NOW');
+                $now = $datetime->format("Y-m-d H:m:s");
+                $db->request("UPDATE entity_data SET ed_datetime_1=? WHERE ed_entity = ?", array($now, $id));
+            }
+
+			return true;
+        }),
         array("id"=>"games", "title"=>"Game", "fields"=>$gameSectionFields, "hasGallery"=>false, "hasSeo"=>true, "isWidget"=>false),
         array("id"=>"game_country_licenses", "title"=>"Country License", "fields"=>$gameCountryLicensesFields, "hasGallery"=>false, "hasSeo"=>false, "isWidget"=>false),
         array("id"=>"game_licenses", "title"=>"Game License", "fields"=>$gameLicensesFields, "hasGallery"=>false, "hasSeo"=>false, "isWidget"=>false),

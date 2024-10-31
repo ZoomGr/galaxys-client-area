@@ -74,6 +74,14 @@
 						saveRemovable($entity["entity_id"]);
 					}
 
+                    if($entityTemplate!==false)
+                    {
+                        if(in_array($entity["entity_type"], ['news']) && isset($entityTemplate["afterUpdateNews"]) && is_callable($entityTemplate["afterUpdateNews"]) )
+                        {
+                            $entityTemplate["afterUpdateNews"]($_POST, $entity['entity_id']);
+                        }
+                    }
+
 					metaRefresh(SECTION_LINK);
 				}
 				elseif( isset($_GET["file"]) && is_string($_GET["file"]) )
