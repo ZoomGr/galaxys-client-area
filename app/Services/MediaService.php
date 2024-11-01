@@ -102,29 +102,6 @@ class MediaService implements MediaRepository
 
     public function downloadFolder(string $path)
     {
-
-            // see laravel's config/filesystem.php for the source disk
-
-//            $file_names = Storage::disk(self::DISK)->directories($path);
-////            $file_names = Storage::disk(self::DISK)->listContents($path)->toArray();
-//            $adapter = new ZipArchiveAdapter(new FilesystemZipArchiveProvider(public_path('archive.zip')));
-//            $zip = new FilesystemAdapter(new Filesystem($adapter), $adapter);
-//
-//            foreach($file_names as $file_name){
-//                $file_content = Storage::disk(self::DISK)->get($file_name);
-//                $zip->put($file_name, $file_content);
-//            }
-//
-//            $zip->getAdapter()->getArchive()->close();
-//
-//            return redirect('archive.zip');
-
-        if (!preg_match('/^[\x20-\x7e]*$/', basename($path))) {
-            $filename = Str::ascii(basename($path));
-        } else {
-            $filename = basename($path);
-        }
-
         if(Storage::disk(self::DISK)->exists($path)) {
             $zip = new ZipArchive();
             $filesToZip = Storage::disk(self::DISK)->allFiles($path ?: '');
@@ -143,28 +120,14 @@ class MediaService implements MediaRepository
                 return "Failed to create the zip file.";
             }
 
-            //Storage::disk(self::DISK)->put($zipFileName, file_get_contents(public_path($zipFileName)), 'public');
+            if (!preg_match('/^[\x20-\x7e]*$/', basename($path))) {
+                $filename = Str::ascii(basename($path));
+            } else {
+                $filename = basename($path);
+            }
 
-            //$s3ZipFile =  $this->downloadFile($zipFileName);
-
-            $downloadFile = file_get_contents(public_path($zipFileName));
-
-            unlink(public_path($zipFileName));
-//            Storage::disk(self::DISK)->delete($zipFileName);
-
-            return $downloadFile;
-
-//            if(isset($testArray)) {
-//                foreach ($testArray as $file) {
-//                    $s3_base_64_file = $this->media_service->getFileBase64($file);
-//                    $s3_files_url[] = 'data:' .$s3_base_64_file['mimeType']. ';base64,'. $s3_base_64_file['base64'];
-//                }
-//                return response()->json(['status' => 200, 'data' => $s3_files_url]);
-//            }
-
-            return null;
-//            return $this->
-//            return Storage::disk(self::DISK)->listContents($path ?: '')->toArray();
+            return response()->download(public_path($zipFileName), $filename. '.zip',
+                array('Content-Type: application/octet-stream','Content-Length: '. public_path($zipFileName)))->deleteFileAfterSend(true);
         }
     }
 
