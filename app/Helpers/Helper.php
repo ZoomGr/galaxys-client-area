@@ -4,6 +4,9 @@ namespace App\Helpers;
 
 class Helper
 {
+    CONST ACCESS_EMAILS = ['Paruyr.harutyunyan@digitain.com', 'gegham.vardanyan.g@digitain.com', 'galina.baghdasaryan@imaginelive.com',
+        'varditer.hakobyan@digitain.com', 'lchukhajyan@gmail.com','paruyr.harutyunyan.as.partner@digitain.com',
+        'digitalmarketing@digitain.com'];
     public static function formatSizeUnits($bytes)
     {
         if ($bytes >= 1073741824) {

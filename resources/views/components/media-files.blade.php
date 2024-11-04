@@ -55,9 +55,11 @@
                                 {{--                                                                <div class="media-table__btn media-link">--}}
                                 {{--                                                                    <i class="icon icon-link"></i>--}}
                                 {{--                                                                </div>--}}
-                                <a href="{{route('medias.download-folder') . '?path='.$directory['path'] }}" download="{{$directory['basename']}}" class="media-table__btn media-download">
-                                    <i class="icon icon-download"></i>
-                                </a>
+                                @if (Auth::user() && in_array(Auth::user()->email, \App\Helpers\Helper::ACCESS_EMAILS))
+                                    <a href="{{route('medias.download-folder') . '?path='.$directory['path'] }}" download="{{$directory['basename']}}" class="media-table__btn media-download">
+                                        <i class="icon icon-download"></i>
+                                    </a>
+                                @endif
                                 @if($add_favorite)
                                     <div class="media-table__btn update-favorite-files {{\App\Models\Favorite::favFile($directory['path']) ? 'active' : ''}}" data-favoriteFile="{{$directory['path']}}">
                                         <i class="icon icon-heart"></i>
