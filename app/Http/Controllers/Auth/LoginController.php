@@ -37,6 +37,12 @@ class LoginController extends Controller
 
             return redirect('/login')->withErrors(['email' => 'Only clients can login!']);
         }
+
+        if ($user->active != 1) {
+            Auth::logout();
+
+            return redirect('/login')->withErrors(['email' => 'These credentials do not match our records!']);
+        }
     }
 
     /**

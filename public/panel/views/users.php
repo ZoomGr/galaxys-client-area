@@ -63,6 +63,10 @@ else
                                         }
                                     }
 
+                                    if (isset($_POST["active"])) {
+                                        $db->request("UPDATE users SET active=? WHERE user_id=?", array($_POST["active"], $uid));
+                                    }
+
                                     $newUserType = null;
 
                                     if (empty($_POST["roles"])) {
@@ -124,6 +128,14 @@ else
                                     <div class="form-group">
                                         <input type="password" id="password_2" name="password_2" class="form-control" placeholder="Repeat New password" />
                                     </div>
+                                    <?php if ($user['role_id'] != null) { ?>
+                                        <div class="form-group">
+                                            <select name="active" id="active"  class="form-control">
+                                                <option value="0" <?= $user["active"] != 1 ? 'selected' : '' ?> >No</option>
+                                                <option value="1" <?= $user["active"] == 1 ? 'selected' : '' ?> >Yes</option>
+                                            </select>
+                                        </div>
+                                    <?php } ?>
                                     <?php
                                     $roles = getRoles();
                                     if( count($roles) > 0 )
