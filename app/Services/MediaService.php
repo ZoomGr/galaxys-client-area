@@ -111,7 +111,6 @@ class MediaService implements MediaRepository
 
             $zip = new ZipArchive();
             $filesToZip = Storage::disk(self::DISK)->allFiles($path ?: '');
-            $s3_files_url = [];
 
             $zipFileName = time().'zip-file.zip';
 
