@@ -155,7 +155,7 @@
 							?>
 							<div class="search-and-add">
 								<div class="search-wrap">
-									<form action="<?php echo SECTION_LINK ?>" method="post">
+									<form action="<?php echo SECTION_LINK ?>" method="get">
 										<?php
 											$keyword = "";
 

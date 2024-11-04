@@ -306,7 +306,12 @@ else
                     </div>
                 </form>
                 <?php
-                $results = $db->data("SELECT COUNT(*) AS mCnt FROM users ", array());
+                if( isset($_GET["keyword"]) && is_string($_GET["keyword"]) && trim($_GET["keyword"])!=="" ) {
+                    $results = $db->data("SELECT COUNT(*) AS mCnt FROM users WHERE name LIKE ?", array("%". $_GET["keyword"] . "%"));
+                } else {
+                    $results = $db->data("SELECT COUNT(*) AS mCnt FROM users ", array());
+                }
+
                 if( count($results) > 0 )
                 {
                     $page = 1;
@@ -324,10 +329,34 @@ else
 
                     $pages = ceil($results[0]["mCnt"] / PAGE_SIZE);
 
-                    $users = $db->data("SELECT * FROM users  LIMIT ?, ?", array($offset, PAGE_SIZE));
+                    if( isset($_GET["keyword"]) && is_string($_GET["keyword"]) && trim($_GET["keyword"])!=="" )
+                    {
+                        $users = $db->data("SELECT * FROM users  WHERE name LIKE ? LIMIT ?, ?", array("%". $_GET["keyword"] . "%", $offset, PAGE_SIZE));
+                    } else {
+                        $users = $db->data("SELECT * FROM users  LIMIT ?, ?", array($offset, PAGE_SIZE));
+                    }
+
                     if( count($users) > 0 )
                     {
                         ?>
+                        <div class="top-section-funktional">
+                            <div class="search-and-add">
+                                <div class="search-wrap">
+                                    <form action="<?php echo SECTION_LINK ?>" method="get">
+                                        <?php
+                                        $keyword = "";
+
+                                        if( isset($_GET["keyword"]) && is_string($_GET["keyword"]) && trim($_GET["keyword"])!=="" )
+                                        {
+                                            $keyword = trim($_GET["keyword"]);
+                                        }
+                                        ?>
+                                        <input type="hidden" name="users">
+                                        <input type="text" name="keyword" class="keyword" value="<?php echo htmlspecialchars($keyword, ENT_QUOTES) ?>" placeholder="search..">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <div class="contact-form form-pading white-background-color border-rad top-bottom-marg">
                             <table border="1" cellpadding="5" cellspacing="0" class="report">
                                 <thead>
@@ -381,6 +410,14 @@ else
                             ?>
                             <form action="<?php echo $_SERVER["SCRIPT_NAME"] ?>" method="get" name="pagerForm">
                                 <input type="hidden" name="users" />
+                                <?php
+                                    if( isset($_GET["keyword"]) && is_string($_GET["keyword"]) && trim($_GET["keyword"])!=="" ) {
+                                        $baseLink .= "&keyword=" . $_GET["keyword"];
+                                ?>
+                                        <input type="hidden" name="keyword" value="<?= $_GET["keyword"] ?>" />
+                                <?php
+                                    }
+                                ?>
                                 <div class="myPagination align-center">
                                     <div>
                                         <?php
