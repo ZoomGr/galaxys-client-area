@@ -103,6 +103,12 @@ class MediaService implements MediaRepository
     public function downloadFolder(string $path)
     {
         if(Storage::disk(self::DISK)->exists($path)) {
+            if (!preg_match('/^[\x20-\x7e]*$/', basename($path))) {
+                $filename = Str::ascii(basename($path));
+            } else {
+                $filename = basename($path);
+            }
+
             $zip = new ZipArchive();
             $filesToZip = Storage::disk(self::DISK)->allFiles($path ?: '');
             $s3_files_url = [];
@@ -112,18 +118,13 @@ class MediaService implements MediaRepository
             if ($zip->open(public_path($zipFileName), \ZipArchive::CREATE) === TRUE) {
                 foreach ($filesToZip as $file) {
                     $fUrl = Storage::disk(self::DISK)->get($file);
-                    $zip->addFromString($file, $fUrl);
+                    $updatedFile = substr($file, strpos($file, $filename), strlen($file));
+                    $zip->addFromString($updatedFile, $fUrl);
                 }
                 $zip->close();
 
             } else {
                 return "Failed to create the zip file.";
-            }
-
-            if (!preg_match('/^[\x20-\x7e]*$/', basename($path))) {
-                $filename = Str::ascii(basename($path));
-            } else {
-                $filename = basename($path);
             }
 
             return response()->download(public_path($zipFileName), $filename. '.zip',
