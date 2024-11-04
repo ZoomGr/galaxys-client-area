@@ -114,7 +114,7 @@ function generateId(length) {
     return result;
 }
 
-function toastMessage(message, type = "default", manualRemove = false) {
+function toastMessage(message, type = "default", manualRemove = false, timeout = 4000) {
     let toastContainer = `<div class="toast-messages"></div>`;
     const toastId = generateId(7);
     const imgSrc = type === "error" ? "warning" : "success";
@@ -138,7 +138,7 @@ function toastMessage(message, type = "default", manualRemove = false) {
     if(manualRemove) {
         return toastId;
     } else {
-        autoRemoveToast(toastId);
+        autoRemoveToast(toastId, timeout);
     }
 }
 
@@ -188,12 +188,12 @@ function writeClipboardText(text, successMessage) {
     }
 }
 
-function autoRemoveToast(id) {
+function autoRemoveToast(id, timeout) {
     new Promise(function (resolve, reject) {
         setTimeout(function () {
             $(`[data-toast-id="${id}"]`).addClass("toast-message_hidden");
             resolve();
-        }, 4000);
+        }, timeout);
     }).then(function () {
         setTimeout(function () {
             $(`[data-toast-id="${id}"]`).remove();

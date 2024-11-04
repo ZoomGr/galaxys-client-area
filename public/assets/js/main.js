@@ -249,9 +249,13 @@ $(document).ready(function () {
                         }
                     },
                     error: function (err) {
-                        toastMessage('Something was wrong!', 'error');
+                        toastMessage('Something was wrong!', 'error', false, 10000);
                     },
                 });
+            }
+
+            if($(e.target).closest(".media-download").length) {
+                toastMessage("Your download will begin shortly", "default");
             }
         });
 
