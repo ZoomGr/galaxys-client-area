@@ -11,7 +11,7 @@ class Authenticate extends Middleware
 {
     public function handle($request, Closure $next, ...$guards)
     {
-        if($this->auth->user() && $this->auth->user()->active != 1) {
+        if(!$this->auth->user() || $this->auth->user()->active != 1) {
             $this->auth->logout();
             return redirect('/login');
         }
