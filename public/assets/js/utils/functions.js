@@ -96,7 +96,11 @@ function getNewMessagesCount() {
                 }
             },
             error: function (err) {
-                toastMessage(err, 'error');
+                toastMessage(err.statusText, 'error');
+
+                if(err.status === 401) {
+                    location.reload();
+                }
             },
         });
     }, 15000);
