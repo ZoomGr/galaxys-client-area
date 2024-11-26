@@ -16,7 +16,7 @@ class PanelEntity
     public static function getMultiple($filters = array(), $with = false, $sortings = array(), $page = false, $limit = false)
     {
         $records = \App\PanelModels\Entity::query();
-        $records->join('entity_data', 'entity_data.ed_entity', '=', 'entities.entity_id');
+        $records->leftJoin('entity_data', 'entity_data.ed_entity', '=', 'entities.entity_id');
         $records->where('entity_visible', 1);
 
         foreach($filters as $field=>$value)
@@ -250,7 +250,7 @@ class PanelEntity
     public static function getPaginate($filters = array(), $limit, $with = false, $sortings = array())
     {
         $records = \App\PanelModels\Entity::query();
-        $records->join('entity_data', 'entity_data.ed_entity', '=', 'entities.entity_id');
+        $records->leftJoin('entity_data', 'entity_data.ed_entity', '=', 'entities.entity_id');
         $records->where('entity_visible', 1);
 
         foreach($filters as $field=>$value)
